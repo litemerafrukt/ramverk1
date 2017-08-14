@@ -76,11 +76,17 @@ module.exports = __webpack_require__(2);
 /***/ (function(module, exports) {
 
 // import {sayHello} from "./helloworld"
-
 (function () {
-    // sayHello('litemerafrukt');
-    // console.log("navroutes: ", window.navroutes);
+    var hamburgerMenuOpen = document.getElementById("hamburger-menu-open");
+    var hamburgerMenuClose = document.getElementById("hamburger-menu-close");
+    var hamburgerMenu = document.getElementById("hamburger-menu");
+    var hamburgerMenuToggler = function () {
+        hamburgerMenu.classList.toggle("fade-in");
+    };
+    hamburgerMenuOpen.addEventListener("click", hamburgerMenuToggler);
+    hamburgerMenuClose.addEventListener("click", hamburgerMenuToggler);
 })();
+
 
 /***/ }),
 /* 2 */

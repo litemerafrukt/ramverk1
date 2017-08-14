@@ -65,4 +65,4 @@ Förutom att fundera över hur mitt önskeforumsprojekt kan tänkas fungera och 
 Jag uppskattar verkligen att redan i kmom01 få en hint om vad vi ska göra i projektet. Ställtiden för att komma igång när jag väl är på kmom10 kan förkortas avsevärt.
 
 ### Me-sidan
-Jag integrerade laravel-mix för att, med hjälp av webbpack, kompilera ihop mina assets, less till css och ES6 till ES5.
+Jag integrerade laravel-mix för att, med hjälp av webpack, kompilera ihop mina assets, less till css och ES6 till ES5. Tyvärr fungerar inte uglifyjs med Ecmascript2015 så jag gjorde en workaround genom att använda typescript istället för javascript.

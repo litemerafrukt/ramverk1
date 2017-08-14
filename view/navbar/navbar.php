@@ -30,18 +30,3 @@
         </div>
     </div>
 </nav>
-
-
-<script>
-    var hamburgerMenuOpen = document.getElementById("hamburger-menu-open");
-    var hamburgerMenuClose = document.getElementById("hamburger-menu-close");
-    var hamburgerMenu = document.getElementById("hamburger-menu");
-
-    var hamburgerMenuToggler = function () {
-        // hamburgerMenu.classList.toggle("hidden");
-        hamburgerMenu.classList.toggle("fade-in");
-    };
-
-    hamburgerMenuOpen.addEventListener("click", hamburgerMenuToggler);
-    hamburgerMenuClose.addEventListener("click", hamburgerMenuToggler);
-</script>

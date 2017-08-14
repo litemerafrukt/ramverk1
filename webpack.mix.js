@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('assets/js/app.js', 'htdocs/js/build/app.js')
+mix.ts('assets/ts/app.ts', 'htdocs/js/build/app.js')
     .less('assets/less/app.less', 'htdocs/css/build/app.css');
 
 // Full API
