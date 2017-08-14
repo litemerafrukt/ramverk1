@@ -1,0 +1,621 @@
+/**
+ * Typographic font families to choose from.
+ */
+/**
+ * Default font-families
+ */
+/**
+ * Typographic sizes for horisontal rythm.
+ */
+/**
+ * Magic number for vertical rythm
+ * @magicNumber = @fontSizeBody * @lineHeight
+ */
+/* 16px - 100%/1.5 */
+/**
+ * Size and lineheight calculation for magicNumber 24
+ *
+ * 3em     * 16px   = 48 => line-height: 48    = 1
+ * 2.875em * 16px   = 46 => line-height: 48/44 = 1.0435
+ * 2.75em  * 16px   = 44 => line-height: 48/44 = 1.0909
+ * 2.625em * 16px   = 42 => line-height: 48/42 = 1.1429
+ * 2.5em   * 16px   = 40 => line-height: 48/40 = 1.2
+ * 2.375em * 16px   = 38 => line-height: 48/38 = 1.2632
+ * 2.25em  * 16px   = 36 => line-height: 48/36 = 1.3333
+ * 2.125em * 16px   = 34 => line-height: 48/34 = 1.4118
+ * 2em     * 16px   = 32 => line-height: 48/32 = 1.5
+ * 1.875em * 16px   = 30 => line-height: 48/30 = 1.6
+ * 1.75em  * 16px   = 28 => line-height: 48/28 = 1.7143
+ * 1.625em * 16px   = 26 => line-height: 48/26 = 1.8462
+ * 1.5em   * 16px   = 24 => line-height: 24    = 1
+ * 1.375em * 16px   = 22 => line-height: 24/22 = 1.0909
+ * 1.25em  * 16px   = 20 => line-height: 24/20 = 1.2
+ * 1.125em * 16px   = 18 => line-height: 24/18 = 1.3333
+ * 1em     * 16px   = 16 => line-height: 24/16 = 1.5
+ * 0.875em * 16px   = 14 => line-height: 24/14 = 1.7143
+ * 0.75em  * 16px   = 12 => line-height: 24/12 = 2
+ */
+/**
+ * Size and lineheight calculation for magicNumber 22
+ *
+ * 3em     * 16px   = 48 => line-height: 66/48 = 1.375
+ * 2.875em * 16px   = 46 => line-height: 66/46 = 1.4348
+ * 2.75em  * 16px   = 44 => line-height: 44    = 1
+ * 2.625em * 16px   = 42 => line-height: 44/42 = 1.0476
+ * 2.5em   * 16px   = 40 => line-height: 44/40 = 1.1
+ * 2.375em * 16px   = 38 => line-height: 44/38 = 1.1579
+ * 2.25em  * 16px   = 36 => line-height: 44/36 = 1.2222
+ * 2.125em * 16px   = 34 => line-height: 44/34 = 1.2941
+ * 2em     * 16px   = 32 => line-height: 44/32 = 1.375
+ * 1.875em * 16px   = 30 => line-height: 44/30 = 1.4667
+ * 1.75em  * 16px   = 28 => line-height: 44/28 = 1.5714
+ * 1.625em * 16px   = 26 => line-height: 44/26 = 1.6923
+ * 1.5em   * 16px   = 24 => line-height: 44/24 = 1.8333
+ * 1.375em * 16px   = 22 => line-height: 22    = 1
+ * 1.25em  * 16px   = 20 => line-height: 22/20 = 1.1
+ * 1.125em * 16px   = 18 => line-height: 22/18 = 1.2222
+ * 1em     * 16px   = 16 => line-height: 22/16 = 1.375
+ * 0.875em * 16px   = 14 => line-height: 22/14 = 1.5714
+ * 0.75em  * 16px   = 12 => line-height: 22/12 = 1.8333
+*/
+/**
+ * Typographic mixins.
+ */
+/**
+ * Typographic defaults.
+ */
+/**
+ * Headings
+ */
+/**
+ * Text elements
+ */
+/**
+ * Display source code.
+ */
+/**
+ * Lists
+ */
+/**
+ * Tables. Because of the need for padding on TH and TD, the vertical rhythm
+ * on table cells has to be 1.5*@magic-number.
+ */
+/**
+ * More typography elements
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Helvetica Neue', 'Roboto', 'Segoe UI', sans-serif;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+h1 img,
+h2 img,
+h3 img,
+h4 img,
+h5 img,
+h6 img {
+  margin: 0;
+}
+h1 {
+  font-size: 2.375em;
+  line-height: 1.26315789;
+  font-weight: normal;
+  border-bottom: 1px solid #666;
+  margin-bottom: 23px;
+}
+h1 ~ h1,
+h1 ~ h2,
+h1 ~ h3,
+h1 ~ h4,
+h1 ~ h5,
+h1 ~ h6 {
+  margin-top: 48px;
+}
+h1 + h2 {
+  margin-top: 24px;
+}
+h2 {
+  font-size: 1.875em;
+  line-height: 1.6;
+  font-weight: normal;
+  margin-top: 48px;
+  margin-bottom: 23px;
+  border-bottom: 1px solid #999;
+}
+h2 + h3 {
+  margin-top: 24px;
+}
+h3 {
+  font-size: 1.375em;
+  line-height: 1.09090909;
+  font-weight: normal;
+}
+h4 {
+  font-size: 1.25em;
+  line-height: 1.2;
+  font-weight: normal;
+}
+h5 {
+  font-size: 1em;
+  line-height: 1.5;
+}
+h6 {
+  font-size: 0.875em;
+  line-height: 1.71428571;
+}
+p {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+small,
+.small,
+.smaller {
+  font-size: 0.875em;
+}
+strong,
+b {
+  font-weight: bold;
+}
+mark {
+  color: #000;
+  background-color: #ffff99;
+}
+abbr[title],
+dfn[title] {
+  -webkit-text-decoration: dotted underline;
+          text-decoration: dotted underline;
+}
+em,
+i,
+dfn {
+  font-style: italic;
+}
+sub,
+sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+blockquote {
+  border-left: 4px solid #eee;
+  padding-left: 1em;
+  margin-left: 0;
+  margin-bottom: 24px;
+}
+pre,
+code,
+kbd,
+samp,
+.code {
+  font-size: 1.25em;
+  font-family: monospace;
+}
+code,
+samp {
+  border: 1px solid #ccc;
+}
+code {
+  background-color: #eee;
+}
+pre,
+div.code,
+pre code {
+  font-size: 1.25em;
+  line-height: 1.6;
+  white-space: pre;
+}
+pre {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+pre code {
+  display: block;
+  overflow: auto;
+}
+div.code,
+pre code {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-top: 23px;
+  margin-bottom: 23px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 0.5em;
+  background-color: #eee;
+}
+ul,
+ol {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding-left: 1.5em;
+}
+ul p,
+ol p {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin: 0;
+}
+ul {
+  list-style-type: disc;
+}
+ol {
+  list-style-type: decimal;
+}
+dl {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+dl.horizontal dt {
+  clear: left;
+  float: left;
+  width: 7em;
+}
+dl.horizontal dd {
+  margin-left: 8em;
+  display: block;
+}
+dd {
+  margin-left: 1.5em;
+}
+article table,
+.table,
+.table1,
+.table2 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+table.full-width,
+article .table,
+.table,
+.table2 {
+  width: 100%;
+}
+article table,
+.table,
+.table2 {
+  border-collapse: collapse;
+}
+article table caption,
+.table caption,
+.table2 caption {
+  font-size: 0.875em;
+  line-height: 1.71428571;
+  text-align: left;
+  font-style: italic;
+}
+article table thead,
+.table thead,
+.table2 thead {
+  -webkit-box-shadow: 0 1px 0 #aaa;
+          box-shadow: 0 1px 0 #aaa;
+}
+article table th,
+.table th,
+.table2 th {
+  vertical-align: bottom;
+  font-weight: bold;
+  text-align: left;
+}
+article table th,
+.table th,
+.table2 th,
+article table td,
+.table td,
+.table2 td {
+  padding: 6px;
+}
+article table tr,
+.table tr,
+.table2 tr {
+  -webkit-box-shadow: 0 1px 0 #ccc;
+          box-shadow: 0 1px 0 #ccc;
+}
+article table tr:hover,
+.table tr:hover,
+.table2 tr:hover {
+  color: #000;
+  background-color: #f6f6f6;
+  -webkit-box-shadow: 0 1px 0 #666;
+          box-shadow: 0 1px 0 #666;
+}
+table.striped tbody tr:nth-child(even) td,
+table.striped tbody tr.even td {
+  background-color: #fafafa;
+}
+hr {
+  position: relative;
+  top: -2px;
+  border: 0;
+  height: 1px;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  margin-top: 35px;
+  margin-bottom: 36px;
+}
+hr:after {
+  content: "\A7";
+  position: relative;
+  top: -0.7em;
+  left: 50%;
+  padding: 0 0.25em;
+  background-color: #fff;
+}
+h1,
+h2 {
+  border: none;
+}
+code,
+kbd {
+  font-size: 16px;
+  border: none;
+  line-height: 0;
+}
+p {
+  font-weight: 300;
+}
+/** --------------------------------------------------------------
+ * Figure through .figure
+ */
+.figure {
+  display: table;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  /* Chrome shinks images in td */
+  /* Position the images */
+}
+.figure a {
+  border: none;
+}
+.figure img {
+  max-width: 100%;
+  display: block;
+}
+.figure figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  padding-top: 12px;
+}
+.figure figcaption p {
+  margin-top: 0;
+}
+.figure td img {
+  max-width: none;
+}
+.figure.left {
+  float: left;
+  margin-right: 8px;
+}
+.figure.right {
+  float: right;
+  margin-left: 8px;
+}
+.figure.center {
+  clear: both;
+  margin: auto;
+}
+.figure.center figcaption {
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .figure.left,
+  .figure.right {
+    float: none;
+    margin: 0 auto;
+  }
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+body {
+  font: 100.01%/1.5 'Helvetica Neue', 'Roboto', 'Segoe UI', sans-serif;
+  background-color: #fcfcfc;
+  border-top: 5px solid #1a1a1a;
+  color: #3a3a3a;
+}
+.wrap-all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 100%;
+}
+.navbar-wrap,
+.main-wrap,
+.footer-wrap {
+  padding: 1rem;
+}
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.header {
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(252, 252, 252, 0.9);
+}
+.content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer {
+  background-color: #3a3a3a;
+  color: #fcfcfc;
+}
+.main-wrap {
+  padding-top: 70px;
+  margin-bottom: auto;
+}
+.container {
+  max-width: 45rem;
+}
+a {
+  color: #09c;
+  text-decoration: none;
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+a :focus,
+a :hover,
+a :active {
+  color: #08c;
+}
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+nav a {
+  border-bottom: 1px solid #fcfcfc;
+  color: #000;
+  margin: 0 0 0 1.5rem;
+  text-decoration: none;
+}
+nav a:visited {
+  color: #000;
+}
+nav a:hover {
+  border-bottom: 1px solid #3a3a3a;
+}
+.active {
+  border-bottom: 1px solid #3a3a3a;
+  text-decoration: none;
+}
+.navbar-brand {
+  font-size: x-large;
+  text-decoration: none;
+  margin: 0;
+}
+.fa-large {
+  font-size: 2em;
+}
+.hamburger-menu {
+  position: fixed;
+  background-color: #fcfcfc;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.hamburger-menu-top-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem;
+}
+.hamburger-menu-links-wrap {
+  font-size: xx-large;
+  line-height: 3em;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.hidden {
+  height: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s, height 0.2s linear;
+  transition: opacity 0.2s, height 0.2s linear;
+}
+.fade-in {
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 0.2s, height 0.2s linear;
+  transition: opacity 0.2s, height 0.2s linear;
+}
+.desktop {
+  display: none;
+}
+.tablet {
+  display: block;
+}
+@media (min-width: 600px) {
+  .desktop {
+    display: block;
+  }
+  .tablet {
+    display: none;
+  }
+}
+/**
+ * More specific stuff
+ */
+.selfie img {
+  border-radius: 50%;
+  max-width: 200px;
+}
+/*
+* Utility stuff
+*/
+.p3 {
+  padding: 3rem;
+}
