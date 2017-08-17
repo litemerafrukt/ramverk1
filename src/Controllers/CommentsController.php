@@ -22,18 +22,27 @@ class CommentsController implements AppInjectableInterface
         $this->commentFormatter = $commentFormatter;
     }
 
+    /**
+     * Setup comment system
+     */
     public function prepare()
     {
         $this->comments->init();
     }
 
-    public function empty()
+    /**
+     * Delete all comments
+     */
+    public function deleteAll()
     {
         $this->comments->empty();
 
         $this->renderPage("comments/emptyconfirm", "Kommentarer nollställda");
     }
 
+    /**
+     * Comments root page
+     */
     public function index()
     {
         $comments = $this->comments->all();
@@ -46,6 +55,9 @@ class CommentsController implements AppInjectableInterface
         $this->renderPage("comments/comments", "Kommentarer", ["comments" => $comments]);
     }
 
+    /**
+     * Add a comment
+     */
     public function new()
     {
         $subject = $this->app->request->getPost("subject");
@@ -65,6 +77,9 @@ class CommentsController implements AppInjectableInterface
         $this->app->redirectBack();
     }
 
+    /**
+     * Delete a comment
+     */
     public function delete($id)
     {
         list($ok, $message) = $this->comments->delete($id);
@@ -78,6 +93,9 @@ class CommentsController implements AppInjectableInterface
         $this->app->redirectBack();
     }
 
+    /**
+     * Show edit page for a comment
+     */
     public function edit($id)
     {
         $comment = $this->comments->fetch($id);
@@ -90,6 +108,9 @@ class CommentsController implements AppInjectableInterface
         $this->renderPage("comments/edit", "{$comment->getSubject()}", ["comment" => $comment]);
     }
 
+    /**
+     * Handle posting of an edited comment
+     */
     public function editHandler($id)
     {
         $subject = $this->app->request->getPost("subject");
@@ -109,6 +130,9 @@ class CommentsController implements AppInjectableInterface
         $this->app->redirectBack();
     }
 
+    /**
+     * Convenience function to render pages in comment system
+     */
     private function renderPage($viewFile, $title, $data = [])
     {
         $data = \array_merge($data, ["formatter" => $this->commentFormatter]);

@@ -23,11 +23,17 @@ class CommentSessionStorage implements CommentStorageInterface
         $this->session = $session;
     }
 
+    /**
+     * Fetch all comments
+     */
     public function all()
     {
         return $this->session->get(self::KEY, []);
     }
 
+    /**
+     * Add a comment
+     */
     public function add(Comment $comment)
     {
         $allComments = $this->all();
@@ -38,11 +44,17 @@ class CommentSessionStorage implements CommentStorageInterface
         return $comment;
     }
 
-    public function empty()
+    /**
+     * Delete all comments
+     */
+    public function deleteAll()
     {
         $this->session->destroy();
     }
 
+    /**
+     * Fetch a comment by id
+     */
     public function fetch($commentId)
     {
         $allComments = $this->all();
@@ -55,6 +67,9 @@ class CommentSessionStorage implements CommentStorageInterface
         return null;
     }
 
+    /**
+     * Get next comment Id
+     */
     public function getNextId()
     {
         $allComments = $this->all();
@@ -67,6 +82,9 @@ class CommentSessionStorage implements CommentStorageInterface
         return $maxId + 1;
     }
 
+    /**
+     * Init storage
+     */
     public function init()
     {
         // $this->session = new Session();
@@ -123,13 +141,13 @@ class CommentSessionStorage implements CommentStorageInterface
         }
     }
 
-    private function mockComments()
-    {
-        return [
-            new Comment("litemerafrukt", "litemerafrukt@gmail.com", "Det går bra nu", "Kommentarssystemet kommer att bli nått under dagen. `Comments`-klassen är nog onödig..."),
-            new Comment("litemerafrukt", "litemerafrukt@gmail.com", "Men lite långsamt", "Ligger en dag efter 'borde vara klart' tidsschemat."),
-        ];
-    }
+    // private function mockComments()
+    // {
+    //     return [
+    //         new Comment("litemerafrukt", "litemerafrukt@gmail.com", "Det går bra nu", "Kommentarssystemet kommer att bli nått under dagen. `Comments`-klassen är nog onödig..."),
+    //         new Comment("litemerafrukt", "litemerafrukt@gmail.com", "Men lite långsamt", "Ligger en dag efter 'borde vara klart' tidsschemat."),
+    //     ];
+    // }
 
     /**
      * Find index for comment
@@ -147,4 +165,5 @@ class CommentSessionStorage implements CommentStorageInterface
             }
         }
         return null;
-    }}
+    }
+}

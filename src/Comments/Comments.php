@@ -88,7 +88,7 @@ class Comments
     /**
      * Empty all comments
      */
-    public function empty()
+    public function deleteAll()
     {
         $this->storage->empty();
     }

@@ -52,6 +52,7 @@ class Flash
      */
     public function message()
     {
+        // @codingStandardsIgnoreLine
         return $this->message ?? "";
     }
 
@@ -62,6 +63,7 @@ class Flash
      */
     public function class()
     {
+        // @codingStandardsIgnoreLine
         return $this->class ?? "";
     }
 }
