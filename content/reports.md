@@ -66,3 +66,5 @@ Jag uppskattar verkligen att redan i kmom01 få en hint om vad vi ska göra i pr
 
 ### Me-sidan
 Jag integrerade laravel-mix för att, med hjälp av webpack, kompilera ihop mina assets, less till css och ES6 till ES5. Tyvärr fungerar inte uglifyjs med Ecmascript2015 så jag gjorde en workaround genom att använda typescript istället för javascript.
+
+För att repetera less och lite javascript har jag valt att inte använda något css-ramverk utan att istället skriva det själv. Jag plockade i och för sig in typografin från design-kursen för att få texten snyggar. I javascript har jag bara gjort så att en enkel responsiv meny fungerar.
