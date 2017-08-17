@@ -16,6 +16,18 @@ class App
     }
 
 
+    /**
+     * Go back to previous route
+     */
+    public function redirectBack()
+    {
+        $previousRoute = \explode(
+            "?",
+            $this->request->getServer('HTTP_REFERER', $this->url->create(""))
+        )[0];
+
+        $this->redirect($previousRoute);
+    }
 
     /**
      * Render a standard web page using a specific layout.
@@ -24,6 +36,12 @@ class App
     {
 //        $data["stylesheets"] = ["css/style.css"];
 
+        if ($this->flash->hasMessage()) {
+            $this->view->add("layout/flash", [
+                "message" => \htmlspecialchars($this->flash->message()),
+                "class" => $this->flash->class()
+            ], "flash");
+        }
         // Add common header, navbar and footer
         //$this->view->add("default1/header", [], "header");
         $this->view->add("navbar/navbar", [], "navbar");

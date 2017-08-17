@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= $this->asset('css/lib/normalize.css') ?>">
     <link rel="stylesheet" href="<?= $this->asset('css/build/app.css') ?>">
-
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 </head>
 <body>
 
@@ -22,6 +22,12 @@
     </div>
 
     <div class="content">
+        <?php if ($this->regionHasContent("flash")) : ?>
+            <div class="flash-wrap">
+                <?php $this->renderRegion("flash") ?>
+            </div>
+        <?php endif ?>
+
         <?php if ($this->regionHasContent("main")) : ?>
             <div class="main-wrap">
                 <section class="section">
@@ -43,5 +49,6 @@
 </div>
 
 <script src="<?= $this->asset('js/build/app.js') ?>"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 </body>
 </html>

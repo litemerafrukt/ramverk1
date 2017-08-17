@@ -21,6 +21,7 @@ $app->router->setApp($app);
 
 // Configure session
 $app->session->configure("session.php");
+$app->session->start();
 
 // Configure url
 $app->url->setSiteUrl($app->request->getSiteUrl());
@@ -41,6 +42,28 @@ $app->view->configure("view.php");
 $app->navbar = new litemerafrukt\Navbar\Navbar();
 $app->navbar->setApp($app);
 $app->navbar->configure("navbar.php");
+
+// Flash
+$app->flash = new \litemerafrukt\Flash\Flash($app->session);
+
+// Remserver
+$rem = new \litemerafrukt\RemServer\RemStorage();
+$rem->configure("remserver.php");
+$rem->inject(["session" => $app->session]);
+$app->remController = new \litemerafrukt\Controllers\RemServerController($rem);
+
+// Init REM Server
+$app->remController->setApp($app);
+
+// Comments
+$app->commentsController = new litemerafrukt\Controllers\CommentsController(
+    new litemerafrukt\Comments\Comments(new litemerafrukt\Comments\CommentSessionStorage($app->session)),
+    function ($rawText) use ($app) {
+        return $app->textfilter->markdown(htmlspecialchars($rawText));
+    }
+);
+
+$app->commentsController->setApp($app);
 
 // Return the populated $app
 return $app;

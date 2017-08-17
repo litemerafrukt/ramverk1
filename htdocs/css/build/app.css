@@ -421,17 +421,85 @@ p {
     margin: 0 auto;
   }
 }
+.button {
+  border: none;
+  background: #65a9d7;
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: white;
+  font-size: 17px;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+  letter-spacing: 1px;
+}
+.button:hover {
+  border: none;
+  background: #28597a;
+  color: #ccc;
+}
+.button:active {
+  border: none;
+  background: #1b435e;
+}
+a.button {
+  cursor: default;
+}
+.flashbox {
+  padding: 1rem;
+  margin: 1rem;
+}
+.flash-info {
+  background-color: lightblue;
+}
+.flash-success {
+  background-color: lightgreen;
+}
+.flash-warning {
+  background-color: lightyellow;
+}
+.flash-danger {
+  background-color: lightpink;
+}
+.comments-input {
+  border: none;
+  border-bottom: 1px solid #c9c9c9;
+  outline: none;
+}
+.comments-text {
+  border: 1px solid #c9c9c9;
+  font-family: monospace;
+  /* font-size: large; */
+  height: 5.1em;
+  resize: none;
+  width: 100%;
+  margin-top: 1em;
+}
 html,
 body {
   height: 100%;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 body {
   font: 100.01%/1.5 'Helvetica Neue', 'Roboto', 'Segoe UI', sans-serif;
   background-color: #fcfcfc;
   border-top: 5px solid #1a1a1a;
   color: #3a3a3a;
+  overflow-y: auto;
+}
+pre {
+  border-radius: 3px;
+  border: 1px solid #c9c9c9;
+  background-color: #ffffff;
+}
+hr {
+  background-image: none;
+  border: none;
+  border-top: 1px solid #c9c9c9;
+}
+hr::after {
+  content: none;
 }
 .wrap-all {
   display: -webkit-box;
@@ -478,13 +546,13 @@ body {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  padding-top: 70px;
 }
 .footer {
   background-color: #3a3a3a;
   color: #fcfcfc;
 }
 .main-wrap {
-  padding-top: 70px;
   margin-bottom: auto;
 }
 .container {
@@ -598,7 +666,7 @@ nav a:hover {
 .tablet {
   display: block;
 }
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .desktop {
     display: block;
   }
@@ -618,4 +686,7 @@ nav a:hover {
 */
 .p3 {
   padding: 3rem;
+}
+.text-right {
+  text-align: right;
 }

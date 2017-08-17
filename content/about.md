@@ -13,4 +13,4 @@ Kursen ramverk1 är ny på dbwebb. Jag hoppas att vi ska titta mer på TDD och o
 
 # Om sidan
 
-Sidan är byggd med [Anax](https://github.com/canax) och finns på [github]().
+Sidan är byggd med [Anax](https://github.com/canax) och finns på [github](https://github.com/litemerafrukt/ramverk1).
