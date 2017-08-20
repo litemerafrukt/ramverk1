@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b140a12f09d3aff1d9bbadea5a3e46de",
+    "content-hash": "a417bb13dd921e783b956179d550d727",
     "packages": [
         {
             "name": "anax/common",
-            "version": "v1.0.12",
+            "version": "v1.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/common.git",
-                "reference": "a471f66925c1ee1c73c18e30cf630809485571df"
+                "reference": "507714bd3bd913e2cf72340e907a7ae907d0cd60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/common/zipball/a471f66925c1ee1c73c18e30cf630809485571df",
-                "reference": "a471f66925c1ee1c73c18e30cf630809485571df",
+                "url": "https://api.github.com/repos/canax/common/zipball/507714bd3bd913e2cf72340e907a7ae907d0cd60",
+                "reference": "507714bd3bd913e2cf72340e907a7ae907d0cd60",
                 "shasum": ""
             },
             "require": {
@@ -56,20 +56,20 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-10T07:27:39+00:00"
+            "time": "2017-08-10T15:25:00+00:00"
         },
         {
             "name": "anax/configure",
-            "version": "v1.0.0",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/configure.git",
-                "reference": "fdcac4f818c0331a06c83740e7eba99e2306ee9f"
+                "reference": "f832a0020bbf640588f5a4fdcdba6524f88bef72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/configure/zipball/fdcac4f818c0331a06c83740e7eba99e2306ee9f",
-                "reference": "fdcac4f818c0331a06c83740e7eba99e2306ee9f",
+                "url": "https://api.github.com/repos/canax/configure/zipball/f832a0020bbf640588f5a4fdcdba6524f88bef72",
+                "reference": "f832a0020bbf640588f5a4fdcdba6524f88bef72",
                 "shasum": ""
             },
             "require": {
@@ -102,7 +102,104 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-05-04T08:43:29+00:00"
+            "time": "2017-08-17T13:32:35+00:00"
+        },
+        {
+            "name": "anax/di",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/canax/di.git",
+                "reference": "76fccd044f750751a420ad738b75b9438978cb1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/canax/di/zipball/76fccd044f750751a420ad738b75b9438978cb1c",
+                "reference": "76fccd044f750751a420ad738b75b9438978cb1c",
+                "shasum": ""
+            },
+            "require": {
+                "anax/configure": "^1.0",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Anax\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikael Roos",
+                    "email": "mos@dbwebb.se",
+                    "homepage": "https://dbwebb.se",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Anax dependency injection module.",
+            "homepage": "https://dbwebb.se/anax",
+            "keywords": [
+                "boilerplate",
+                "education",
+                "framework",
+                "micro",
+                "mvc"
+            ],
+            "time": "2017-08-17T13:41:49+00:00"
+        },
+        {
+            "name": "anax/page",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/canax/page.git",
+                "reference": "d8c37e911df9c3a37c32629e4e4debcf8c13d079"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/canax/page/zipball/d8c37e911df9c3a37c32629e4e4debcf8c13d079",
+                "reference": "d8c37e911df9c3a37c32629e4e4debcf8c13d079",
+                "shasum": ""
+            },
+            "require": {
+                "anax/di": "^1.0",
+                "anax/request": "^1.0",
+                "anax/response": "^1.0",
+                "anax/view": "^1.0",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Anax\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikael Roos",
+                    "email": "mos@dbwebb.se",
+                    "homepage": "https://dbwebb.se",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Anax page module.",
+            "homepage": "https://dbwebb.se/anax",
+            "keywords": [
+                "boilerplate",
+                "education",
+                "framework",
+                "micro",
+                "mvc"
+            ],
+            "time": "2017-08-14T22:27:32+00:00"
         },
         {
             "name": "anax/request",
@@ -155,16 +252,16 @@
         },
         {
             "name": "anax/response",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/response.git",
-                "reference": "b026eea38af2a52874fe9cbf7b58db37d08b34c9"
+                "reference": "c86eac3837209f341d40ca439176c189049840bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/response/zipball/b026eea38af2a52874fe9cbf7b58db37d08b34c9",
-                "reference": "b026eea38af2a52874fe9cbf7b58db37d08b34c9",
+                "url": "https://api.github.com/repos/canax/response/zipball/c86eac3837209f341d40ca439176c189049840bb",
+                "reference": "c86eac3837209f341d40ca439176c189049840bb",
                 "shasum": ""
             },
             "require": {
@@ -197,24 +294,25 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-04-12T14:55:30+00:00"
+            "time": "2017-08-17T15:49:29+00:00"
         },
         {
             "name": "anax/router",
-            "version": "v1.0.10",
+            "version": "v1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/router.git",
-                "reference": "29bae6f9a072d17bce986d4b566a7e5ee3beabce"
+                "reference": "e090bf9710e9047dafb2d35a31ccffc871901454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/router/zipball/29bae6f9a072d17bce986d4b566a7e5ee3beabce",
-                "reference": "29bae6f9a072d17bce986d4b566a7e5ee3beabce",
+                "url": "https://api.github.com/repos/canax/router/zipball/e090bf9710e9047dafb2d35a31ccffc871901454",
+                "reference": "e090bf9710e9047dafb2d35a31ccffc871901454",
                 "shasum": ""
             },
             "require": {
                 "anax/common": "1.0.*",
+                "anax/di": "1.0.*",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -244,20 +342,20 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-10T06:01:25+00:00"
+            "time": "2017-08-15T12:44:14+00:00"
         },
         {
             "name": "anax/session",
-            "version": "v1.0.1",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/session.git",
-                "reference": "ac7b95fe9433430ed2055d3699d80aa355b8a61f"
+                "reference": "7dd0c410f85f3501c97069c874179bc8b7a9065d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/session/zipball/ac7b95fe9433430ed2055d3699d80aa355b8a61f",
-                "reference": "ac7b95fe9433430ed2055d3699d80aa355b8a61f",
+                "url": "https://api.github.com/repos/canax/session/zipball/7dd0c410f85f3501c97069c874179bc8b7a9065d",
+                "reference": "7dd0c410f85f3501c97069c874179bc8b7a9065d",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +394,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-06-26T12:21:47+00:00"
+            "time": "2017-08-17T15:52:40+00:00"
         },
         {
             "name": "anax/textfilter",
@@ -404,23 +502,22 @@
         },
         {
             "name": "anax/view",
-            "version": "v1.0.12",
+            "version": "v1.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/view.git",
-                "reference": "c5de53371de1c9e52df0d1aed07e56e684b5c682"
+                "reference": "f7ec49342915610560e931887cd33d0891693c6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/view/zipball/c5de53371de1c9e52df0d1aed07e56e684b5c682",
-                "reference": "c5de53371de1c9e52df0d1aed07e56e684b5c682",
+                "url": "https://api.github.com/repos/canax/view/zipball/f7ec49342915610560e931887cd33d0891693c6b",
+                "reference": "f7ec49342915610560e931887cd33d0891693c6b",
                 "shasum": ""
             },
             "require": {
                 "anax/common": "^1.0",
-                "php": ">=5.6"
-            },
-            "require-dev": {
+                "anax/configure": "^1.0",
+                "anax/di": "^1.0",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -450,7 +547,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-03T15:40:27+00:00"
+            "time": "2017-08-15T12:45:30+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",

@@ -3,17 +3,18 @@
 namespace litemerafrukt\Controllers;
 
 use litemerafrukt\RemServer\RemStorage;
-use \Anax\Common\AppInjectableInterface;
-use \Anax\Common\AppInjectableTrait;
+
+use Anax\DI\InjectionAwareInterface;
+use Anax\DI\InjectionAwareTrait;
 
 /**
  * A controller for the REM Server.
  *
  * @SuppressWarnings(PHPMD.ExitExpression)
  */
-class RemServerController implements AppInjectableInterface
+class RemServerController implements InjectionAwareInterface
 {
-    use AppInjectableTrait;
+    use InjectionAwareTrait;
 
     private $rem;
 
@@ -29,8 +30,6 @@ class RemServerController implements AppInjectableInterface
      */
     public function prepare()
     {
-        // $this->app->session->start();
-
         $this->rem->hasDataset() ?: $this->rem->init();
     }
 
@@ -44,7 +43,7 @@ class RemServerController implements AppInjectableInterface
     public function init()
     {
         $this->rem->init();
-        $this->app->response->sendJson(["message" => "The session is initiated with the default dataset."]);
+        $this->di->get('response')->sendJson(["message" => "The session is initiated with the default dataset."]);
         exit;
     }
 
@@ -57,8 +56,8 @@ class RemServerController implements AppInjectableInterface
      */
     public function destroy()
     {
-        $this->app->session->destroy();
-        $this->app->response->sendJson(["message" => "The session was destroyed."]);
+        $this->di->get('session')->destroy();
+        $this->di->get('response')->sendJson(["message" => "The session was destroyed."]);
         exit;
     }
 
@@ -74,8 +73,8 @@ class RemServerController implements AppInjectableInterface
     public function getDataset($key)
     {
         $dataset = $this->rem->getDataset($key);
-        $offset = $this->app->request->getGet("offset", 0);
-        $limit = $this->app->request->getGet("limit", 25);
+        $offset = $this->di->get('request')->getGet("offset", 0);
+        $limit = $this->di->get('request')->getGet("limit", 25);
         $res = [
             "data" => array_slice($dataset, $offset, $limit),
             "offset" => $offset,
@@ -83,7 +82,7 @@ class RemServerController implements AppInjectableInterface
             "total" => count($dataset)
         ];
 
-        $this->app->response->sendJson($res);
+        $this->di->get('response')->sendJson($res);
         exit;
     }
 
@@ -102,7 +101,7 @@ class RemServerController implements AppInjectableInterface
         $item = $this->rem->getItem($key, $itemId) ??
             ["message" => "The item is not found."];
 
-        $this->app->response->sendJson($item);
+        $this->di->get('response')->sendJson($item);
         exit;
     }
 
@@ -118,11 +117,11 @@ class RemServerController implements AppInjectableInterface
      */
     public function postItem($key)
     {
-        $entry = $this->app->request->getBody();
+        $entry = $this->di->get('request')->getBody();
         $entry = \json_decode($entry);
 
         $item = $this->rem->addItem($key, $entry);
-        $this->app->response->sendJson($item);
+        $this->di->get('response')->sendJson($item);
         exit;
     }
 
@@ -137,11 +136,11 @@ class RemServerController implements AppInjectableInterface
      */
     public function putItem($key, $itemId)
     {
-        $entry = $this->app->request->getBody();
+        $entry = $this->di->get('request')->getBody();
         $entry = json_decode($entry);
 
         $item = $this->rem->upsertItem($key, $itemId, $entry);
-        $this->app->response->sendJson($item);
+        $this->di->get('response')->sendJson($item);
         exit;
     }
 
@@ -158,7 +157,7 @@ class RemServerController implements AppInjectableInterface
     public function deleteItem($key, $itemId)
     {
         $this->rem->deleteItem($key, $itemId);
-        $this->app->response->sendJson(null);
+        $this->di->get('response')->sendJson(null);
         exit;
     }
 
@@ -171,7 +170,7 @@ class RemServerController implements AppInjectableInterface
      */
     public function anyUnsupported()
     {
-        $this->app->response->sendJson(["message" => "404. The api/ does not support that."], 404);
+        $this->di->get('response')->sendJson(["message" => "404. The api/ does not support that."], 404);
         exit;
     }
 }

@@ -1,11 +1,11 @@
 <nav class="navbar">
-    <a class="navbar-brand" href="<?= $app->navbar->navbarBrand()['route'] ?>"><?= $app->navbar->navbarBrand()['label'] ?></a>
+    <a class="navbar-brand" href="<?= $di->get('navbar')->navbarBrand()['route'] ?>"><?= $di->get('navbar')->navbarBrand()['label'] ?></a>
 
     <div class="desktop">
-        <?php foreach ($app->navbar->navroutes() as $navroute) : ?>
+        <?php foreach ($di->get('navbar')->navroutes() as $navroute) : ?>
             <a
                     href="<?= $navroute['route'] ?>"
-                    class="<?= $navroute['route'] == $app->request->getCurrentUrl() ? 'active' : '' ?>"
+                    class="<?= $navroute['route'] == $di->get('request')->getCurrentUrl() ? 'active' : '' ?>"
             ><?= $navroute['label'] ?></a>
         <?php endforeach; ?>
     </div>
@@ -20,10 +20,10 @@
                 </div>
             </div>
             <div class="hamburger-menu-links-wrap">
-                <?php foreach ($app->navbar->navroutes() as $navroute) : ?>
+                <?php foreach ($di->get('navbar')->navroutes() as $navroute) : ?>
                     <a
                             href="<?= $navroute['route'] ?>"
-                            class="<?= $navroute['route'] == $app->request->getCurrentUrl() ? 'active' : '' ?>"
+                            class="<?= $navroute['route'] == $di->get('request')->getCurrentUrl() ? 'active' : '' ?>"
                     ><?= $navroute['label'] ?></a>
                 <?php endforeach; ?>
             </div>

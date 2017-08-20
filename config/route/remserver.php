@@ -2,29 +2,61 @@
 /**
  * Routes for the REM Server.
  */
- /** Start the session and initiate the REM Server. */
-$app->router->add("remserver/api/**", [$app->remController, "prepare"]);
-
-/** Init or re-init the REM Server. */
-$app->router->get("remserver/api/init", [$app->remController, "init"]);
-
-/** Destroy the session. */
-$app->router->get("remserver/api/destroy", [$app->remController, "destroy"]);
-
-/** Get the dataset or parts of it. */
-$app->router->get("remserver/api/{dataset:alphanum}", [$app->remController, "getDataset"]);
-
-/** Get one item from the dataset. */
-$app->router->get("remserver/api/{dataset:alphanum}/{id:digit}", [$app->remController, "getItem"]);
-
-/** Create a new item and add to the dataset */
-$app->router->post("remserver/api/{dataset:alphanum}", [$app->remController, "postItem"]);
-
-/** Upsert/replace an item in the dataset. */
-$app->router->put("remserver/api/{dataset:alphanum}/{id:digit}", [$app->remController, "putItem"]);
-
-/** Delete an item from the dataset */
-$app->router->delete("remserver/api/{dataset:alphanum}/{id:digit}", [$app->remController, "deleteItem"]);
-
-/** Show a message that the route is unsupported, a local 404. */
-$app->router->add("remserver/api/**", [$app->remController, "anyUnsupported"]);
+return [
+    "routes" => [
+        [
+            "info" => "Start the session and initiate the REM Server.",
+            "requestMethod" => null,
+            "path" => "**",
+            "callable" => ["remController", "prepare"]
+        ],
+        [
+            "info" => "Init or re-init the REM Server.",
+            "requestMethod" => "get",
+            "path" => "init",
+            "callable" => ["remController", "init"]
+        ],
+        [
+            "info" => "Destroy the session.",
+            "requestMethod" => "get",
+            "path" => "destroy",
+            "callable" => ["remController", "destroy"]
+        ],
+        [
+            "info" => "Get the dataset or parts of it.",
+            "requestMethod" => "get",
+            "path" => "{dataset:alphanum}",
+            "callable" => ["remController", "getDataset"]
+        ],
+        [
+            "info" => "Get one item from the dataset.",
+            "requestMethod" => "get",
+            "path" => "{dataset:alphanum}/{id:digit}",
+            "callable" => ["remController", "getItem"]
+        ],
+        [
+            "info" => "Create a new item and add to the dataset.",
+            "requestMethod" => "post",
+            "path" => "{dataset:alphanum}",
+            "callable" => ["remController", "postItem"]
+        ],
+        [
+            "info" => "Upsert/replace an item in the dataset.",
+            "requestMethod" => "put",
+            "path" => "{dataset:alphanum}/{id:digit}",
+            "callable" => ["remController", "putItem"]
+        ],
+        [
+            "info" => "Delete an item from the dataset.",
+            "requestMethod" => "delete",
+            "path" => "{dataset:alphanum}/{id:digit}",
+            "callable" => ["remController", "deleteItem"]
+        ],
+        [
+            "info" => "Show a message that the route is unsupported, a local 404.",
+            "requestMethod" => null,
+            "path" => "**",
+            "callable" => ["remController", "anyUnsupported"]
+        ],
+    ]
+];

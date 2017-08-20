@@ -1,5 +1,5 @@
 <h1>Kommentarsprototyp</h1>
-<form action="<?= $app->url->create("comments/new") ?>" method="post">
+<form action="<?= $di->get('url')->create("comments/new") ?>" method="post">
     <p>
         <input class="comments-input" type="text" name="subject" required placeholder="<rubrik>">
 
@@ -23,7 +23,7 @@
         <p><a href="mailto: <?= htmlspecialchars($comment->getAuthorEmail()) ?>"><?= htmlspecialchars($viewName)?></a></p>
     <p><?= $comment->getText($formatter)?></p>
     <p class="text-right">
-        <a href="<?= $app->url->create('comments/edit/' . $comment->getId()) ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-        <a href="<?= $app->url->create('comments/delete/' . $comment->getId()) ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        <a href="<?= $di->get('url')->create('comments/edit/' . $comment->getId()) ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <a href="<?= $di->get('url')->create('comments/delete/' . $comment->getId()) ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
     </p>
 <?php endforeach ?>
