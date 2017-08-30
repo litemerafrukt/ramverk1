@@ -5,6 +5,7 @@ namespace litemerafrukt\Controllers;
 use litemerafrukt\Comments\Comments;
 use litemerafrukt\Comments\Comment;
 use litemerafrukt\Gravatar\Gravatar;
+use litemerafrukt\User\UserLevels;
 
 use Anax\DI\InjectionAwareInterface;
 use Anax\DI\InjectionAwareTrait;
@@ -35,7 +36,7 @@ class CommentsController implements InjectionAwareInterface
      */
     public function deleteAll()
     {
-        $this->comments->empty();
+        $this->comments->deleteAll();
 
         $this->renderPage("comments/emptyconfirm", "Kommentarer nollställda");
     }
@@ -52,7 +53,11 @@ class CommentsController implements InjectionAwareInterface
             return $comment;
         }, $comments);
 
-        $this->renderPage("comments/comments", "Kommentarer", ["comments" => $comments]);
+        $user = $this->di->get('user');
+        $user->isUser = $user->isLevel(UserLevels::USER);
+        $user->isAdmin = $user->isLevel(UserLevels::ADMIN);
+
+        $this->renderPage("comments/comments", "Kommentarer", \compact('comments', 'user'));
     }
 
     /**
@@ -60,12 +65,16 @@ class CommentsController implements InjectionAwareInterface
      */
     public function new()
     {
+        $this->guard();
+
         $subject = $this->di->get('request')->getPost("subject");
-        $author = $this->di->get('request')->getPost("author");
-        $authorEmail = $this->di->get('request')->getPost("authorEmail");
+        // $author = $this->di->get('request')->getPost("author");
+        // $authorEmail = $this->di->get('request')->getPost("authorEmail");
         $text = $this->di->get('request')->getPost("text");
 
-        list($ok, $message) = $this->comments->add($subject, $author, $authorEmail, $text);
+        $user = $this->di->get('user');
+
+        list($ok, $message) = $this->comments->add($subject, $user->id(), $user->name(), $user->email(), $text);
 
         if ($ok) {
             $this->di->get('flash')->setFlash($message, "flash-success");
@@ -81,6 +90,8 @@ class CommentsController implements InjectionAwareInterface
      */
     public function delete($id)
     {
+        $this->guard($id);
+
         list($ok, $message) = $this->comments->delete($id);
 
         if ($ok) {
@@ -89,7 +100,7 @@ class CommentsController implements InjectionAwareInterface
             $this->di->get('flash')->setFlash($message, "flash-danger");
         }
 
-        $this->app->redirectBack();
+        $this->di->get('tlz')->redirectBack();
     }
 
     /**
@@ -97,11 +108,13 @@ class CommentsController implements InjectionAwareInterface
      */
     public function edit($id)
     {
+        $this->guard($id);
+
         $comment = $this->comments->fetch($id);
 
         if ($comment === null) {
             $this->di->get('flash')->setFlash("Kommentar med id: $id hittades inte.", "flash-danger");
-            $this->app->redirectBack();
+            $this->di->get('tlz')->redirectBack();
         }
 
         $this->renderPage("comments/edit", "{$comment->getSubject()}", ["comment" => $comment]);
@@ -112,13 +125,15 @@ class CommentsController implements InjectionAwareInterface
      */
     public function editHandler($id)
     {
+        $this->guard($id);
+
         $subject = $this->di->get('request')->getPost("subject");
-        $author = $this->di->get('request')->getPost("author");
-        $authorEmail = $this->di->get('request')->getPost("authorEmail");
+        // $author = $this->di->get('request')->getPost("author");
+        // $authorEmail = $this->di->get('request')->getPost("authorEmail");
         $text = $this->di->get('request')->getPost("text");
 
 
-        list($ok, $message) = $this->comments->upsert($id, $subject, $author, $authorEmail, $text);
+        list($ok, $message) = $this->comments->upsert($id, $subject, $text);
 
         if ($ok) {
             $this->di->get('flash')->setFlash($message, "flash-success");
@@ -126,7 +141,7 @@ class CommentsController implements InjectionAwareInterface
             $this->di->get('flash')->setFlash($message, "flash-danger");
         }
 
-        $this->app->redirectBack();
+        $this->di->get('tlz')->redirectBack();
     }
 
     /**
@@ -139,5 +154,32 @@ class CommentsController implements InjectionAwareInterface
         $this->di->get('view')->add($viewFile, $data, "main");
 
         $this->di->get('pageRender')->renderPage(["title" => $title]);
+    }
+
+    /**
+     * Guard comment handling
+     *
+     * @param int $commentId
+     */
+    private function guard($commentId = null)
+    {
+        $user = $this->di->get('user');
+
+        if ($user->isLevel(UserLevels::ADMIN)) {
+            return;
+        }
+
+        if ($user->isLevel(UserLevels::USER) && $commentId == null) {
+            return;
+        }
+
+        $comment = $this->comments->fetch($commentId);
+
+        if ($user->isLevel(UserLevels::USER) && ($comment->getAuthorId() == $user->id())) {
+            return $commentId;
+        }
+
+        $this->di->get('flash')->setFlash('Spärrad!', 'flash-danger');
+        $this->di->get('tlz')->redirect('');
     }
 }

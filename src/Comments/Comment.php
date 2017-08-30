@@ -7,13 +7,15 @@ class Comment
     private $id;
     private $subject;
     private $author;
+    private $authorId;
     private $authorEmail;
     private $rawText;
 
-    public function __construct($id, $subject, $author, $authorEmail, $text)
+    public function __construct($id, $subject, $authorId, $author, $authorEmail, $text)
     {
         $this->id = $id;
         $this->subject = \trim($subject);
+        $this->authorId = $authorId;
         $this->author = \trim($author);
         $this->authorEmail = \trim($authorEmail);
         $this->rawText = \trim($text);
@@ -37,6 +39,16 @@ class Comment
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Get author id
+     *
+     * @return int
+     */
+    public function getAuthorId()
+    {
+        return $this->authorId;
     }
 
     /**
@@ -79,5 +91,26 @@ class Comment
     public function getRawText()
     {
         return $this->rawText;
+    }
+
+     /**
+     * Create a new comment from this comment
+     *
+     * @param array $updatedFields - keys should be comment field names
+     *
+     * @return Comment
+     */
+    public function newFromThis($updatedFields)
+    {
+        $id = $this->id;
+        $subject = $this->subject;
+        $authorId = $this->authorId;
+        $author = $this->author;
+        $authorEmail = $this->authorEmail;
+        $rawText = $this->rawText;
+
+        \extract($updatedFields);
+
+        return new Comment($id, $subject, $authorId, $author, $authorEmail, $rawText);
     }
 }

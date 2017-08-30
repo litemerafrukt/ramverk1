@@ -19,17 +19,18 @@ class Comments
      * Add a comment
      *
      * @param string
+     * @param int
      * @param string
      * @param string
      * @param string
      *
      * @return Comment
      */
-    public function add($subject, $author, $authorEmail, $text)
+    public function add($subject, $authorId, $author, $authorEmail, $text)
     {
         $id = $this->storage->getNextId();
 
-        $comment = new Comment($id, $subject, $author, $authorEmail, $text);
+        $comment = new Comment($id, $subject, $authorId, $author, $authorEmail, $text);
 
         list($valid, $message) = $this->validateComment($comment);
 
@@ -52,15 +53,17 @@ class Comments
      *
      * @return Comment
      */
-    public function upsert($id, $subject, $author, $authorEmail, $text)
+    public function upsert($id, $subject, $text)
     {
-        $comment = new Comment($id, $subject, $author, $authorEmail, $text);
+        $originalComment = $this->storage->fetch($id);
 
-        list($valid, $message) = $this->validateComment($comment);
+        $newComment = $originalComment->newFromThis(['subject' => $subject, 'rawText' => $text]);
+
+        list($valid, $message) = $this->validateComment($newComment);
 
         if ($valid) {
-            $this->storage->upsert($comment);
-            return [true, "Kommentaren, \"{$comment->getSubject()}\", har ändrats."];
+            $this->storage->upsert($newComment);
+            return [true, "Kommentaren, \"{$newComment->getSubject()}\", har ändrats."];
         } else {
             return [false, $message];
         }
@@ -90,7 +93,7 @@ class Comments
      */
     public function deleteAll()
     {
-        $this->storage->empty();
+        $this->storage->deleteAll();
     }
 
     /**
