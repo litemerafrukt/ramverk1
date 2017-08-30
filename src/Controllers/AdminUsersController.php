@@ -78,7 +78,7 @@ class AdminUsersController implements InjectionAwareInterface
             $this->di->get('flash')->setFlash($userOrMessage, 'flash-danger');
             $this->di->get('tlz')->redirectBack();
         }
-
+        $this->di->get('flash')->setFlash("Användare $name lades till", 'flash-success');
         $this->di->get('tlz')->redirect('admin/users');
     }
 
@@ -99,6 +99,8 @@ class AdminUsersController implements InjectionAwareInterface
 
     /**
      * Handle edit user profile
+     *
+     * @param int $id
      */
     public function handleEdit($id)
     {
@@ -124,5 +126,39 @@ class AdminUsersController implements InjectionAwareInterface
         }
         $this->di->get('flash')->setFlash($message, "flash-success");
         $this->di->get('tlz')->redirect("admin/users");
+    }
+
+    /**
+     * Delete user with id
+     *
+     * @param int $id
+     */
+    public function delete($id)
+    {
+        list($ok, $message) = $this->usersHandler->deleteUser($id);
+
+        if (! $ok) {
+            $this->di->get('flash')->setFlash($message, "flash-danger");
+            $this->di->get('tlz')->redirectBack();
+        }
+        $this->di->get('flash')->setFlash($message, "flash-success");
+        $this->di->get('tlz')->redirectBack();
+    }
+
+    /**
+     * Make user with id admin
+     *
+     * @param int $id
+     */
+    public function makeAdmin($id)
+    {
+        list($ok, $message) = $this->usersHandler->makeAdmin($id);
+
+        if (! $ok) {
+            $this->di->get('flash')->setFlash($message, "flash-danger");
+            $this->di->get('tlz')->redirectBack();
+        }
+        $this->di->get('flash')->setFlash($message, "flash-success");
+        $this->di->get('tlz')->redirectBack();
     }
 }

@@ -64,7 +64,7 @@ class UserHandler
         $statement = $this->db->query($sql, [$name, $passHash, $email, $level]);
 
         if ($statement->errorCode() !== '00000') {
-            return [false, "Kunde inte registrera $name."];
+            return [false, "Kunde inte registrera $name. Användarnamn eller e-postadress är förmodligen inte unikt."];
         }
 
         $id = $this->db->getPDO()->lastInsertId();
@@ -88,28 +88,9 @@ class UserHandler
         $sql = "UPDATE r1_users SET username=?, email=? WHERE id=?";
         $statement = $this->db->query($sql, [$name, $email, $id]);
         if ($statement->errorCode() !== '00000') {
-            return [false, "Kunde inte uppdatera användare $name"];
+            return [false, "Kunde inte uppdatera användare $name. Användarnamn eller e-postadress är förmodligen inte unikt."];
         }
         return [true, "Profilen för $name är uppdaterad."];
-    }
-
-    /**
-     * Set user with id to admin
-     *
-     * @param int
-     * @param string
-     * @param string
-     *
-     * @return array [bool, string]
-     */
-    public function makeAdmin($id)
-    {
-        $sql = "UPDATE r1_users SET userlevel=? WHERE id=?";
-        $statement = $this->db->query($sql, [UserLevels::ADMIN, $id]);
-        if ($statement->errorCode() !== '00000') {
-            return [false, "Kunde inte gör anvädare med id=$id till administratör."];
-        }
-        return [true, "Användare nr: $id, har nu administratörsrättigheter."];
     }
 
     /**

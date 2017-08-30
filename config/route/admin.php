@@ -45,5 +45,17 @@ return [
             "path" => "users/edit/{id:digit}",
             "callable" => ["adminUsersController", "handleEdit"]
         ],
+        [
+            "info" => "Admin delete user",
+            "requestMethod" => "get",
+            "path" => "users/delete/{id:digit}",
+            "callable" => ["adminUsersController", "delete"]
+        ],
+        [
+            "info" => "Admin make user admin",
+            "requestMethod" => "get",
+            "path" => "users/promote/{id:digit}",
+            "callable" => ["adminUsersController", "makeAdmin"]
+        ],
     ]
 ];

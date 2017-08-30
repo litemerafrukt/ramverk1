@@ -21,12 +21,20 @@
             <td><?= $user['email'] ?></td>
             <td><?= $user['userlevel'] ?></td>
             <td>
-                <a title="Redigera" class="tooltip-edit" href="<?= $this->di->get('url')->create('admin/users/edit/'.$user['id']) ?>">
+                <a title="Redigera" href="<?= $this->di->get('url')->create('admin/users/edit/'.$user['id']) ?>">
                     <i class="fa fa-pencil"></i>
                 </a>
             </td>
-            <td><a title="Ta bort" class="tooltip-delete" href="#"><i class="fa fa-trash"></i></a></td>
-            <td><a title="Gör till administratör" class="tooltip-make-admin" href="#"><i class="fa fa-unlock-alt"></i></a></td>
+            <td>
+                <a title="Gör till administratör" class="tooltip-make-admin" href="<?= $this->di->get('url')->create('admin/users/promote/'.$user['id']) ?>">
+                    <i class="fa fa-unlock-alt"></i>
+                </a>
+            </td>
+            <td>
+                <a class="danger" title="Ta bort" href="<?= $this->di->get('url')->create('admin/users/delete/'.$user['id']) ?>">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
