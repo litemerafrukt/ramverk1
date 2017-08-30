@@ -27,6 +27,16 @@ return [
             "file" => __DIR__ . "/route/remserver.php",
         ],
         [
+            // Routes for user account managing
+            "mount" => "user",
+            "file" => __DIR__ . "/route/user.php",
+        ],
+        [
+            // Routes for admin
+            "mount" => "admin",
+            "file" => __DIR__ . "/route/admin.php",
+        ],
+        [
             // To read flat file content in Markdown from content/
             "mount" => null,
             "file" => __DIR__ . "/route/flat-file-content.php",
@@ -39,16 +49,3 @@ return [
     ],
 
 ];
-
-// require __DIR__ . "/route/internal.php";
-// require __DIR__ . "/route/debug.php";
-// require __DIR__ . "/route/flat-file-content.php";
-// require __DIR__ . "/route/core.php";
-// require __DIR__ . "/route/remserver.php";
-// require __DIR__ . "/route/comments.php";
-
-
-// /**
-//  * 404 should be last
-//  */
-// require __DIR__ . "/route/404.php";

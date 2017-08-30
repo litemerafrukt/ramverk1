@@ -16,6 +16,22 @@ class Render implements PageRenderInterface, InjectionAwareInterface
     use InjectionAwareTrait;
 
     /**
+     * Convenience function to render pages in layout
+     *
+     * @param string
+     * @param string
+     * @param array
+     */
+    public function quick($viewFile, $title, $data = [])
+    {
+        $data = \array_merge($data);
+
+        $this->di->get('view')->add($viewFile, $data, "main");
+
+        $this->di->get('pageRender')->renderPage(["title" => $title]);
+    }
+
+    /**
      * Render a standard web page using a specific layout.
      *
      * @param array   $data   variables to expose to layout view.
@@ -36,6 +52,7 @@ class Render implements PageRenderInterface, InjectionAwareInterface
                 "class" => $flash->class()
             ], "flash");
         }
+
         // Add common header, navbar and footer
         //$this->view->add("default1/header", [], "header");
         $view->add("navbar/navbar", [], "navbar");

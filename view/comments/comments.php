@@ -2,7 +2,6 @@
 <form action="<?= $di->get('url')->create("comments/new") ?>" method="post">
     <p>
         <input class="comments-input" type="text" name="subject" required placeholder="<rubrik>">
-
     </p>
     <p>
         <input class="comments-input" type="text" name="author" placeholder="<namn>">

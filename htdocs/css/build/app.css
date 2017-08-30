@@ -475,6 +475,24 @@ a.button {
   width: 100%;
   margin-top: 1em;
 }
+table {
+  margin-top: 1.3em;
+  min-width: 70%;
+  text-align: left;
+}
+@media (min-width: 900px) {
+  table {
+    max-width: 70%;
+  }
+}
+th,
+td {
+  padding-left: 0.5em;
+  padding-right: 1.5em;
+}
+thead {
+  background-color: #ddd;
+}
 html,
 body {
   height: 100%;
@@ -599,6 +617,9 @@ nav a:hover {
   text-decoration: none;
   margin: 0;
 }
+.loginButton:hover {
+  border: none;
+}
 .fa-large {
   font-size: 2em;
 }
@@ -664,7 +685,7 @@ nav a:hover {
 .tablet {
   display: block;
 }
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .desktop {
     display: block;
   }
@@ -687,4 +708,9 @@ nav a:hover {
 }
 .text-right {
   text-align: right;
+}
+.left-divider {
+  border-left: 1px solid #3a3a3a;
+  padding-left: 1rem;
+  margin-left: 1rem;
 }

@@ -8,6 +8,7 @@
                     class="<?= $navroute['route'] == $di->get('request')->getCurrentUrl() ? 'active' : '' ?>"
             ><?= $navroute['label'] ?></a>
         <?php endforeach; ?>
+        <a class="left-divider login-button" href="<?= $di->get('url')->create('user/login') ?>"><?= $di->get('loginButton')->icon() ?></a>
     </div>
 
     <div class="tablet">
@@ -26,6 +27,7 @@
                             class="<?= $navroute['route'] == $di->get('request')->getCurrentUrl() ? 'active' : '' ?>"
                     ><?= $navroute['label'] ?></a>
                 <?php endforeach; ?>
+                <a class="login-button" href="<?= $di->get('url')->create('user/login') ?>"><?= $di->get('loginButton')->icon() ?></a>
             </div>
         </div>
     </div>

@@ -108,9 +108,35 @@ return [
         "pageRender" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new litemerafrukt\Render\Render();
+                $obj = new \litemerafrukt\Render\Render();
                 $obj->setDI($this);
                 return $obj;
+            }
+        ],
+        "db" => [
+            "shared" => true,
+            "callback" => function () {
+                $db = new litemerafrukt\Database\Database();
+                $db->configure('database.php');
+                $db->connect();
+                return $db;
+            }
+        ],
+        "user" => [
+            "shared" => true,
+            "callback" => function () {
+                return $this->get('session')->get(
+                    'user',
+                    new \litemerafrukt\User\User(null, 'Gäst', '', litemerafrukt\User\UserLevels::GUEST)
+                );
+            }
+        ],
+        "loginButton" => [
+            "shared" => true,
+            "callback" => function () {
+                $loginButton = new \litemerafrukt\LoginButton\LoginButton();
+                $loginButton->setDI($this);
+                return $loginButton;
             }
         ],
         "navbar" => [
@@ -143,7 +169,7 @@ return [
             }
         ],
         "commentsController" => [
-            "shared" => false,
+            "shared" => true,
             "callback" => function () {
                 $commentsStorage = new litemerafrukt\Comments\CommentSessionStorage($this->get('session'));
                 $commentsSupplier = new litemerafrukt\Comments\Comments($commentsStorage);
@@ -153,6 +179,51 @@ return [
                 $commentsController = new litemerafrukt\Controllers\CommentsController($commentsSupplier, $textFormatter);
                 $commentsController->setDi($this);
                 return $commentsController;
+            }
+        ],
+        "userController" => [
+            "shared" => true,
+            "callback" => function () {
+                $userHandler = new litemerafrukt\User\UserHandler($this->get('db'));
+                $userController = new litemerafrukt\Controllers\UserController($userHandler);
+                $userController->setDI($this);
+                return $userController;
+            }
+        ],
+        "userAccountController" => [
+            "shared" => true,
+            "callback" => function () {
+                $userHandler = new litemerafrukt\User\UserHandler($this->get('db'));
+                $userController = new litemerafrukt\Controllers\UserAccountController($userHandler);
+                $userController->setDI($this);
+                return $userController;
+            }
+        ],
+        "userRegisterController" => [
+            "shared" => true,
+            "callback" => function () {
+                $userHandler = new litemerafrukt\User\UserHandler($this->get('db'));
+                $userController = new litemerafrukt\Controllers\UserRegisterController($userHandler);
+                $userController->setDI($this);
+                return $userController;
+            }
+        ],
+        "adminController" => [
+            "shared" => true,
+            "callback" => function () {
+                $userController = new litemerafrukt\Controllers\AdminController();
+                $userController->setDI($this);
+                return $userController;
+            }
+        ],
+        "adminUsersController" => [
+            "shared" => true,
+            "callback" => function () {
+                $userHandler = new litemerafrukt\User\UserHandler($this->get('db'));
+                $usersHandler = new litemerafrukt\Admin\UsersHandler($this->get('db'));
+                $userController = new litemerafrukt\Controllers\AdminUsersController($userHandler, $usersHandler);
+                $userController->setDI($this);
+                return $userController;
             }
         ],
     ],

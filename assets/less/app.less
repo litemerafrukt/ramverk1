@@ -3,6 +3,7 @@
 @import './button.less';
 @import './flash.less';
 @import './comments.less';
+@import './table.less';
 
 @fontFamilyBody: 'Helvetica Neue', 'Roboto', 'Segoe UI', sans-serif;
 @fontFamilyHeadings: @fontFamilyBody;
@@ -150,6 +151,10 @@ nav {
     margin: 0;
 }
 
+.loginButton:hover {
+    border: none;
+}
+
 .fa-large {
     font-size: 2em;
 }
@@ -206,7 +211,7 @@ nav {
     display: block;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
     .desktop {
         display: block;
     }
@@ -240,4 +245,10 @@ nav {
 
 .text-right {
     text-align: right;
+}
+
+.left-divider {
+    border-left: 1px solid @mainColor;
+    padding-left: 1rem;
+    margin-left: 1rem;
 }

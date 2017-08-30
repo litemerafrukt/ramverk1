@@ -27,38 +27,19 @@ class Tools implements InjectionAwareInterface
      */
     public function redirectBack()
     {
-        $httpReferer =  $this->di->get("request")->getServer('HTTP_REFERER', $this->di->get('url')->create(""));
+        $httpReferer =  $this->referer();
         $previousRoute = \explode("?", $httpReferer)[0];
 
         $this->redirect($previousRoute);
     }
 
     /**
-     * Render a standard web page using a specific layout.
+     * Get referer or start page if not exists
+     *
+     * @return string
      */
-//     public function renderPage($data = [], $status = 200)
-//     {
-// //        $data["stylesheets"] = ["css/style.css"];
-
-//         $flash = $this->di->get("flash");
-//         $view = $this->di->get("view");
-
-//         if ($flash->hasMessage()) {
-//             $view->add("layout/flash", [
-//                 "message" => \htmlspecialchars($flash->message()),
-//                 "class" => $flash->class()
-//             ], "flash");
-//         }
-//         // Add common header, navbar and footer
-//         //$this->view->add("default1/header", [], "header");
-//         $view->add("navbar/navbar", [], "navbar");
-//         $view->add("footer/footer", [], "footer");
-
-//         // Add layout, render it, add to response and send.
-//         $view->add("layout/layout", $data, "layout");
-//         $body = $view->renderBuffered("layout");
-
-//         $this->di->get("response")->setBody($body)->send($status);
-//         exit;
-//     }
+    public function referer()
+    {
+        return $this->di->get("request")->getServer('HTTP_REFERER', $this->di->get('url')->create(""));
+    }
 }
