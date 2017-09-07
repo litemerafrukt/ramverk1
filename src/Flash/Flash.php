@@ -2,8 +2,13 @@
 
 namespace litemerafrukt\Flash;
 
-class Flash
+use Anax\DI\InjectionAwareInterface;
+use Anax\DI\InjectionAwareTrait;
+
+class Flash implements InjectionAwareInterface
 {
+    use InjectionAwareTrait;
+
     const FLASH_MESSAGE = "litemerafrukt:flashmessage";
     const FLASH_CLASS   = "litemerafrukt:flashclass";
 
@@ -12,13 +17,11 @@ class Flash
     private $class;
 
      /**
-     * Construct flash object and clear message from session
-     *
-     * @param - a started session
+     * Init flash object and clear message from session
      */
-    public function __construct($session)
+    public function init()
     {
-        $this->session = $session;
+        $this->session = $this->di->get("session");
         $this->message = $this->session->getOnce(self::FLASH_MESSAGE);
         $this->class = $this->session->getOnce(self::FLASH_CLASS);
     }

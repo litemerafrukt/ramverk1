@@ -5,13 +5,14 @@ namespace litemerafrukt\Controllers;
 use litemerafrukt\Comments\Comments;
 use litemerafrukt\Comments\Comment;
 use litemerafrukt\Gravatar\Gravatar;
+use litemerafrukt\User\UserLevels;
 
-use \Anax\Common\AppInjectableInterface;
-use \Anax\Common\AppInjectableTrait;
+use Anax\DI\InjectionAwareInterface;
+use Anax\DI\InjectionAwareTrait;
 
-class CommentsController implements AppInjectableInterface
+class CommentsController implements InjectionAwareInterface
 {
-    use AppInjectableTrait;
+    use InjectionAwareTrait;
 
     private $comments;
     private $commentFormatter;
@@ -35,7 +36,7 @@ class CommentsController implements AppInjectableInterface
      */
     public function deleteAll()
     {
-        $this->comments->empty();
+        $this->comments->deleteAll();
 
         $this->renderPage("comments/emptyconfirm", "Kommentarer nollställda");
     }
@@ -52,7 +53,11 @@ class CommentsController implements AppInjectableInterface
             return $comment;
         }, $comments);
 
-        $this->renderPage("comments/comments", "Kommentarer", ["comments" => $comments]);
+        $user = $this->di->get('user');
+        $user->isUser = $user->isLevel(UserLevels::USER);
+        $user->isAdmin = $user->isLevel(UserLevels::ADMIN);
+
+        $this->renderPage("comments/comments", "Kommentarer", \compact('comments', 'user'));
     }
 
     /**
@@ -60,21 +65,24 @@ class CommentsController implements AppInjectableInterface
      */
     public function new()
     {
-        $subject = $this->app->request->getPost("subject");
-        $author = $this->app->request->getPost("author");
-        $authorEmail = $this->app->request->getPost("authorEmail");
-        $text = $this->app->request->getPost("text");
+        $this->guard();
 
+        $subject = $this->di->get('request')->getPost("subject");
+        // $author = $this->di->get('request')->getPost("author");
+        // $authorEmail = $this->di->get('request')->getPost("authorEmail");
+        $text = $this->di->get('request')->getPost("text");
 
-        list($ok, $message) = $this->comments->add($subject, $author, $authorEmail, $text);
+        $user = $this->di->get('user');
+
+        list($ok, $message) = $this->comments->add($subject, $user->id(), $user->name(), $user->email(), $text);
 
         if ($ok) {
-            $this->app->flash->setFlash($message, "flash-success");
+            $this->di->get('flash')->setFlash($message, "flash-success");
         } else {
-            $this->app->flash->setFlash($message, "flash-danger");
+            $this->di->get('flash')->setFlash($message, "flash-danger");
         }
 
-        $this->app->redirectBack();
+        $this->di->get('tlz')->redirectBack();
     }
 
     /**
@@ -82,15 +90,17 @@ class CommentsController implements AppInjectableInterface
      */
     public function delete($id)
     {
+        $this->guard($id);
+
         list($ok, $message) = $this->comments->delete($id);
 
         if ($ok) {
-            $this->app->flash->setFlash($message, "flash-info");
+            $this->di->get('flash')->setFlash($message, "flash-info");
         } else {
-            $this->app->flash->setFlash($message, "flash-danger");
+            $this->di->get('flash')->setFlash($message, "flash-danger");
         }
 
-        $this->app->redirectBack();
+        $this->di->get('tlz')->redirectBack();
     }
 
     /**
@@ -98,11 +108,13 @@ class CommentsController implements AppInjectableInterface
      */
     public function edit($id)
     {
+        $this->guard($id);
+
         $comment = $this->comments->fetch($id);
 
         if ($comment === null) {
-            $this->app->flash->setFlash("Kommentar med id: $id hittades inte.", "flash-danger");
-            $this->app->redirectBack();
+            $this->di->get('flash')->setFlash("Kommentar med id: $id hittades inte.", "flash-danger");
+            $this->di->get('tlz')->redirectBack();
         }
 
         $this->renderPage("comments/edit", "{$comment->getSubject()}", ["comment" => $comment]);
@@ -113,21 +125,23 @@ class CommentsController implements AppInjectableInterface
      */
     public function editHandler($id)
     {
-        $subject = $this->app->request->getPost("subject");
-        $author = $this->app->request->getPost("author");
-        $authorEmail = $this->app->request->getPost("authorEmail");
-        $text = $this->app->request->getPost("text");
+        $this->guard($id);
+
+        $subject = $this->di->get('request')->getPost("subject");
+        // $author = $this->di->get('request')->getPost("author");
+        // $authorEmail = $this->di->get('request')->getPost("authorEmail");
+        $text = $this->di->get('request')->getPost("text");
 
 
-        list($ok, $message) = $this->comments->upsert($id, $subject, $author, $authorEmail, $text);
+        list($ok, $message) = $this->comments->upsert($id, $subject, $text);
 
         if ($ok) {
-            $this->app->flash->setFlash($message, "flash-success");
+            $this->di->get('flash')->setFlash($message, "flash-success");
         } else {
-            $this->app->flash->setFlash($message, "flash-danger");
+            $this->di->get('flash')->setFlash($message, "flash-danger");
         }
 
-        $this->app->redirectBack();
+        $this->di->get('tlz')->redirectBack();
     }
 
     /**
@@ -137,8 +151,35 @@ class CommentsController implements AppInjectableInterface
     {
         $data = \array_merge($data, ["formatter" => $this->commentFormatter]);
 
-        $this->app->view->add($viewFile, $data, "main");
+        $this->di->get('view')->add($viewFile, $data, "main");
 
-        $this->app->renderPage(["title" => $title]);
+        $this->di->get('pageRender')->renderPage(["title" => $title]);
+    }
+
+    /**
+     * Guard comment handling
+     *
+     * @param int $commentId
+     */
+    private function guard($commentId = null)
+    {
+        $user = $this->di->get('user');
+
+        if ($user->isLevel(UserLevels::ADMIN)) {
+            return;
+        }
+
+        if ($user->isLevel(UserLevels::USER) && $commentId == null) {
+            return;
+        }
+
+        $comment = $this->comments->fetch($commentId);
+
+        if ($user->isLevel(UserLevels::USER) && ($comment->getAuthorId() == $user->id())) {
+            return $commentId;
+        }
+
+        $this->di->get('flash')->setFlash('Spärrad!', 'flash-danger');
+        $this->di->get('tlz')->redirect('');
     }
 }

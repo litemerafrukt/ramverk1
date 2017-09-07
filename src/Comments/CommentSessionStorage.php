@@ -21,6 +21,7 @@ class CommentSessionStorage implements CommentStorageInterface
     public function __construct(Session $session)
     {
         $this->session = $session;
+        // $this->session->start();
     }
 
     /**
@@ -39,6 +40,7 @@ class CommentSessionStorage implements CommentStorageInterface
         $allComments = $this->all();
 
         $allComments[] = $comment;
+
         $this->session->set(self::KEY, $allComments);
 
         return $comment;

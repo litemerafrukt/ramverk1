@@ -2,14 +2,14 @@
 
 namespace litemerafrukt\Navbar;
 
-use Anax\Common\AppInjectableInterface;
-use Anax\Common\AppInjectableTrait;
+use Anax\DI\InjectionAwareInterface;
+use Anax\DI\InjectionAwareTrait;
 use Anax\Common\ConfigureInterface;
 use Anax\Common\ConfigureTrait;
 
-class Navbar implements AppInjectableInterface, ConfigureInterface
+class Navbar implements InjectionAwareInterface, ConfigureInterface
 {
-    use AppInjectableTrait;
+    use InjectionAwareTrait;
     use ConfigureTrait;
 
     /**
@@ -21,7 +21,7 @@ class Navbar implements AppInjectableInterface, ConfigureInterface
     {
         return array_map(function ($route) {
             return [
-                'route' => $this->app->url->create($route['route']),
+                'route' => $this->di->get("url")->create($route['route']),
                 'label' => $route['label'],
             ];
         }, $this->config['routes']);
@@ -38,7 +38,7 @@ class Navbar implements AppInjectableInterface, ConfigureInterface
 
         return [
             'label' => $navbarBrand['label'],
-            'route' => $this->app->url->create($navbarBrand['route']),
+            'route' => $this->di->get("url")->create($navbarBrand['route']),
         ];
     }
 
