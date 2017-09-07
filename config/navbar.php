@@ -18,10 +18,6 @@ return [
             "label" => '<i class="fa fa-archive" aria-hidden="true"></i> Rapporter',
             "route" => "reports",
         ],
-        "articles" => [
-            "label" => '<i class="fa fa-file-text" aria-hidden="true"></i> Artiklar',
-            "route" => 'articles',
-        ],
         "comments" => [
             "label" => '<i class="fa fa-comments" aria-hidden="true"></i> ProtoKom',
             "route" => "comments",
