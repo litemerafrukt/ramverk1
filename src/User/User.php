@@ -7,10 +7,10 @@ namespace litemerafrukt\User;
  */
 class User
 {
-    private $id;
-    private $name;
-    private $email;
-    private $level;
+    public $id;
+    public $name;
+    public $email;
+    public $level;
 
     /**
      * User constructor.

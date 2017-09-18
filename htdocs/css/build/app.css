@@ -462,6 +462,7 @@ a.button {
   background-color: lightpink;
 }
 .comments-input {
+  background-color: #fcfcfc;
   border: none;
   border-bottom: 1px solid #c9c9c9;
   outline: none;
@@ -492,6 +493,10 @@ td {
 }
 thead {
   background-color: #ddd;
+}
+/** styling forms */
+.form-element-required {
+  display: none;
 }
 html,
 body {
@@ -708,6 +713,9 @@ nav a:hover {
 }
 .text-right {
   text-align: right;
+}
+.float-right {
+  float: right;
 }
 .left-divider {
   border-left: 1px solid #3a3a3a;

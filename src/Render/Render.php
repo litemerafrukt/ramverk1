@@ -24,11 +24,11 @@ class Render implements PageRenderInterface, InjectionAwareInterface
      */
     public function quick($viewFile, $title, $data = [])
     {
-        $data = \array_merge($data);
+        $data = \array_merge(["title" => $title], $data);
 
         $this->di->get('view')->add($viewFile, $data, "main");
 
-        $this->di->get('pageRender')->renderPage(["title" => $title]);
+        $this->di->get('pageRender')->renderPage($data);
     }
 
     /**

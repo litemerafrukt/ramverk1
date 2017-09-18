@@ -3,7 +3,7 @@
 namespace litemerafrukt\Controllers;
 
 use litemerafrukt\User\UserLevels;
-use litemerafrukt\Gravatar\Gravatar;
+use litemerafrukt\Forms\User\Login\LoginForm;
 use Anax\DI\InjectionAwareInterface;
 use Anax\DI\InjectionAwareTrait;
 
@@ -30,7 +30,14 @@ class UserController implements InjectionAwareInterface
         if ($user) {
             $this->di->get('tlz')->redirect("user/account/profile");
         }
-        $this->di->get('pageRender')->quick('user/login', 'Logga in');
+
+        $form = new LoginForm($this->di, $this->userHandler);
+
+        $form->check();
+
+        $formHTML = $form->getHTML(['use_fieldset' => false]);
+
+        $this->di->get('pageRender')->quick('user/login', 'Logga in', ['form' => $formHTML]);
     }
 
     /**
@@ -40,31 +47,6 @@ class UserController implements InjectionAwareInterface
     {
         $this->di->get('session')->delete('user');
         $this->di->get('tlz')->redirect('user/login');
-    }
-
-    /**
-     * Handle login attempt
-     */
-    public function loginAttempt()
-    {
-        $username = \trim($this->di->get('request')->getPost('username', ''));
-        $password = \trim($this->di->get('request')->getPost('password', ''));
-
-        if ($username === '' || $password === '') {
-            $this->di->get('flash')->setFlash('Fel i användarnamn eller lösenord', 'flash-info');
-            $this->di->get('tlz')->redirect('user/login');
-        }
-
-        list($ok, $userOrMessage) = $this->userHandler->login($username, $password);
-
-        if (! $ok) {
-            $this->di->get('session')->delete('user');
-            $this->di->get('flash')->setFlash($userOrMessage, "flash-info");
-            $this->di->get('tlz')->redirectBack();
-        }
-        $this->di->get('session')->set('user', $userOrMessage);
-        $this->di->get('flash')->setFlash("Inloggad som $username", "flash-success");
-        $this->di->get('tlz')->redirectBack();
     }
 
     /**

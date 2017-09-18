@@ -5,27 +5,15 @@ return [
     "routes" => [
         [
             "info" => "User registration",
-            "requestMethod" => "get",
+            "requestMethod" => "get|post",
             "path" => "register",
             "callable" => ["userRegisterController", "register"]
         ],
         [
-            "info" => "User registration",
-            "requestMethod" => "post",
-            "path" => "register",
-            "callable" => ["userRegisterController", "handleRegister"]
-        ],
-        [
             "info" => "user login",
-            "requestMethod" => "get",
+            "requestMethod" => "get|post",
             "path" => "login",
             "callable" => ["userController", "login"]
-        ],
-        [
-            "info" => "user login attempt",
-            "requestMethod" => "post",
-            "path" => "login",
-            "callable" => ["userController", "loginAttempt"]
         ],
         [
             "info" => "user logout",
@@ -47,27 +35,15 @@ return [
         ],
         [
             "info" => "User edit profile",
-            "requestMethod" => "get",
+            "requestMethod" => "get|post",
             "path" => "account/profile/edit",
             "callable" => ["userAccountController", "editProfile"]
         ],
         [
-            "info" => "User handle edit profile",
-            "requestMethod" => "post",
-            "path" => "account/profile/edit",
-            "callable" => ["userAccountController", "handleEditProfile"]
-        ],
-        [
             "info" => "User change password",
-            "requestMethod" => "get",
+            "requestMethod" => "get|post",
             "path" => "account/password",
             "callable" => ["userAccountController", "changePassword"]
-        ],
-        [
-            "info" => "User handle change password",
-            "requestMethod" => "post",
-            "path" => "account/password",
-            "callable" => ["userAccountController", "handleChangePassword"]
         ],
     ]
 ];

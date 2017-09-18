@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "602d324f830f0cd4838113d5ed4a86d1",
+    "content-hash": "5c9490fe4ca6c6ce27a8987e7ebfbf11",
     "packages": [
         {
             "name": "anax/common",
@@ -105,6 +105,58 @@
             "time": "2017-08-17T13:32:35+00:00"
         },
         {
+            "name": "anax/database",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/canax/database.git",
+                "reference": "6f318016a72c1448b0a5191aaee630f86c6c4c7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/canax/database/zipball/6f318016a72c1448b0a5191aaee630f86c6c4c7d",
+                "reference": "6f318016a72c1448b0a5191aaee630f86c6c4c7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "anax/common": "^1.0"
+            },
+            "suggest": {
+                "anax/common": "To enhance integration with Anax framework."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Anax\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikael Roos",
+                    "email": "mos@dbwebb.se",
+                    "homepage": "https://dbwebb.se",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Anax Database module.",
+            "homepage": "https://dbwebb.se/anax",
+            "keywords": [
+                "boilerplate",
+                "education",
+                "framework",
+                "micro",
+                "mvc"
+            ],
+            "time": "2017-09-05T11:09:53+00:00"
+        },
+        {
             "name": "anax/di",
             "version": "v1.0.3",
             "source": {
@@ -150,6 +202,57 @@
                 "mvc"
             ],
             "time": "2017-08-17T13:41:49+00:00"
+        },
+        {
+            "name": "anax/htmlform",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/canax/htmlform.git",
+                "reference": "68d46708eafc85342f16147ebf867fe745c8795c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/canax/htmlform/zipball/68d46708eafc85342f16147ebf867fe745c8795c",
+                "reference": "68d46708eafc85342f16147ebf867fe745c8795c",
+                "shasum": ""
+            },
+            "require": {
+                "anax/di": "^1.0",
+                "anax/request": "^1.0",
+                "anax/response": "^1.0",
+                "anax/session": "^1.0",
+                "anax/url": "^1.0",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Anax\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikael Roos",
+                    "email": "mos@dbwebb.se",
+                    "homepage": "https://dbwebb.se",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Anax htmlform module.",
+            "homepage": "https://dbwebb.se/anax",
+            "keywords": [
+                "boilerplate",
+                "education",
+                "framework",
+                "micro",
+                "mvc"
+            ],
+            "time": "2017-08-24T13:50:30+00:00"
         },
         {
             "name": "anax/page",
@@ -502,16 +605,16 @@
         },
         {
             "name": "anax/view",
-            "version": "v1.0.15",
+            "version": "v1.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/view.git",
-                "reference": "f7ec49342915610560e931887cd33d0891693c6b"
+                "reference": "b0c280efe565a091ac464b9f227116f2db35abc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/view/zipball/f7ec49342915610560e931887cd33d0891693c6b",
-                "reference": "f7ec49342915610560e931887cd33d0891693c6b",
+                "url": "https://api.github.com/repos/canax/view/zipball/b0c280efe565a091ac464b9f227116f2db35abc6",
+                "reference": "b0c280efe565a091ac464b9f227116f2db35abc6",
                 "shasum": ""
             },
             "require": {
@@ -547,7 +650,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-15T12:45:30+00:00"
+            "time": "2017-09-11T14:12:42+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -798,20 +901,20 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.6",
+            "version": "v3.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "ddc23324e6cfe066f3dd34a37ff494fa80b617ed"
+                "reference": "1d8c2a99c80862bdc3af94c1781bf70f86bccac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/ddc23324e6cfe066f3dd34a37ff494fa80b617ed",
-                "reference": "ddc23324e6cfe066f3dd34a37ff494fa80b617ed",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/1d8c2a99c80862bdc3af94c1781bf70f86bccac0",
+                "reference": "1d8c2a99c80862bdc3af94c1781bf70f86bccac0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": "^5.5.9|>=7.0.8"
             },
             "require-dev": {
                 "symfony/console": "~2.8|~3.0"
@@ -849,28 +952,28 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-23T12:43:26+00:00"
+            "time": "2017-07-29T21:54:42+00:00"
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.4.33",
+            "version": "v5.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "73aa38b20d932f5e8f8ccf721e4c27f4304783d6"
+                "reference": "6f72c2fe16ac32153337045eaa60f21e2391b8f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/73aa38b20d932f5e8f8ccf721e4c27f4304783d6",
-                "reference": "73aa38b20d932f5e8f8ccf721e4c27f4304783d6",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/6f72c2fe16ac32153337045eaa60f21e2391b8f1",
+                "reference": "6f72c2fe16ac32153337045eaa60f21e2391b8f1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.4"
+                "php": ">=7.0"
             },
             "require-dev": {
-                "mockery/mockery": "^0.9.7",
-                "phpunit/phpunit": "^5.7"
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~6.0"
             },
             "type": "library",
             "autoload": {
@@ -896,7 +999,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2017-08-14T20:47:19+00:00"
+            "time": "2017-09-07T17:07:35+00:00"
         }
     ],
     "packages-dev": [],

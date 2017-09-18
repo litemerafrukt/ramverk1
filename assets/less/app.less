@@ -4,6 +4,7 @@
 @import './flash.less';
 @import './comments.less';
 @import './table.less';
+@import './form.less';
 
 @fontFamilyBody: 'Helvetica Neue', 'Roboto', 'Segoe UI', sans-serif;
 @fontFamilyHeadings: @fontFamilyBody;
@@ -16,7 +17,8 @@
 
 @maxWidth: 1100px;
 
-html, body {
+html,
+body {
     height: 100%;
     width: 100%;
     // overflow-y: hidden;
@@ -62,7 +64,9 @@ hr::after {
     min-height: 100%;
 }
 
-.navbar-wrap, .main-wrap ,.footer-wrap {
+.navbar-wrap,
+.main-wrap,
+.footer-wrap {
     padding: @stdMargin;
 }
 
@@ -83,7 +87,12 @@ hr::after {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(red(@mainBackgroundColor), green(@mainBackgroundColor), blue(@mainBackgroundColor), .9);
+    background-color: rgba(
+        red(@mainBackgroundColor),
+        green(@mainBackgroundColor),
+        blue(@mainBackgroundColor),
+        0.9
+    );
 }
 
 .content {
@@ -102,7 +111,6 @@ hr::after {
     margin-bottom: auto;
 }
 
-
 .container {
     max-width: 45rem;
 }
@@ -113,7 +121,9 @@ a {
     -webkit-transition: color 0.2s ease-out;
     transition: color 0.2s ease-out;
 
-    :focus, :hover, :active {
+    :focus,
+    :hover,
+    :active {
         color: #08c;
     }
 }
@@ -137,7 +147,6 @@ nav {
     a:hover {
         border-bottom: 1px solid @mainColor;
     }
-
 }
 
 .active {
@@ -179,7 +188,7 @@ nav {
     padding: @stdMargin;
 }
 
-.hamburger-menu-links-wrap{
+.hamburger-menu-links-wrap {
     font-size: xx-large;
     line-height: 3em;
     width: 100%;
@@ -218,9 +227,9 @@ nav {
     .tablet {
         display: none;
     }
- }
+}
 
- /**
+/**
  * More specific stuff
  */
 
@@ -245,6 +254,10 @@ nav {
 
 .text-right {
     text-align: right;
+}
+
+.float-right {
+    float: right;
 }
 
 .left-divider {
