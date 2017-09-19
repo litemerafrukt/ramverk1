@@ -46,6 +46,10 @@ return [
             "mount" => null,
             "file" => __DIR__ . "/route/404.php",
         ],
+        [
+            // Add routes from bookController and mount on book/
+            "mount" => "book",
+            "file" => __DIR__ . "/route/book.php",
+        ],
     ],
-
 ];
