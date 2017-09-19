@@ -129,6 +129,14 @@ return [
                 return $db;
             }
         ],
+        "queryBuilder" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Anax\Database\DatabaseQueryBuilder();
+                $obj->configure("querybuilder.php");
+                return $obj;
+            }
+        ],
         "user" => [
             "shared" => true,
             "callback" => function () {
@@ -231,6 +239,14 @@ return [
                 $userController = new litemerafrukt\Controllers\AdminUsersController($userHandler, $usersHandler);
                 $userController->setDI($this);
                 return $userController;
+            }
+        ],
+        "bookController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \litemerafrukt\Book\BookController();
+                $obj->setDI($this);
+                return $obj;
             }
         ],
     ],
