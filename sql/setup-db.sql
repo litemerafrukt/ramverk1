@@ -24,3 +24,21 @@ VALUES
 ;
 
 SELECT * FROM r1_users;
+
+--
+-- Table Book
+--
+DROP TABLE IF EXISTS r1_Book;
+CREATE TABLE r1_Book (
+    `id` INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    `title` VARCHAR(256) NOT NULL,
+    `author` VARCHAR(256) NOT NULL
+) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
+
+INSERT INTO r1_Book
+  (title, author)
+VALUES
+  ('Magins Färg', 'Terry Pratchett'),
+  ('American Gods', 'Neil Gaiman'),
+  ('Den flammande bägaren', 'JK Rowling')
+;

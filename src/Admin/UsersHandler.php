@@ -3,6 +3,7 @@
 namespace litemerafrukt\Admin;
 
 use litemerafrukt\User\UserLevels;
+
 /**
  * Class for administrating users
  */
@@ -70,7 +71,7 @@ class UsersHandler
         $sql = "DELETE FROM r1_users WHERE id=?";
         $statement = $this->db->query($sql, [$id]);
         if ($statement->errorCode() !== '00000') {
-            return [false, "Kunde inte ta bort anvädare med id=$id."];
+            return [false, "Kunde inte ta bort användare med id=$id."];
         }
         return [true, "Användare med id: $id, har tagits bort."];
     }

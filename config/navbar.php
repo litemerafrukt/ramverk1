@@ -22,6 +22,10 @@ return [
             "label" => '<i class="fa fa-comments" aria-hidden="true"></i> ProtoKom',
             "route" => "comments",
         ],
+        "books" => [
+            "label" => '<i class="fa fa-book" aria-hidden="true"></i> Book',
+            "route" => "book",
+        ],
         "remserver" => [
             "label" => '<i class="fa fa-server" aria-hidden="true"></i> Remserver',
             "route" => "remserver",

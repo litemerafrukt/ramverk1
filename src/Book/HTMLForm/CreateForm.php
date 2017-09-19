@@ -22,22 +22,24 @@ class CreateForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                "legend" => "Details of the item",
+                "legend" => "Skapa ny bok",
             ],
             [
-                "column1" => [
+                "title" => [
+                    "label" => "Titel",
                     "type" => "text",
                     "validation" => ["not_empty"],
                 ],
-                        
-                "column2" => [
+
+                "author" => [
+                    "label" => "Författare",
                     "type" => "text",
                     "validation" => ["not_empty"],
                 ],
 
                 "submit" => [
                     "type" => "submit",
-                    "value" => "Create item",
+                    "value" => "Skapa",
                     "callback" => [$this, "callbackSubmit"]
                 ],
             ]
@@ -56,8 +58,8 @@ class CreateForm extends FormModel
     {
         $book = new Book();
         $book->setDb($this->di->get("db"));
-        $book->column1  = $this->form->value("column1");
-        $book->column2 = $this->form->value("column2");
+        $book->title  = $this->form->value("title");
+        $book->author = $this->form->value("author");
         $book->save();
         $this->di->get("response")->redirect("book");
     }

@@ -120,20 +120,20 @@ return [
                 return $obj;
             }
         ],
-        "db" => [
+        "olddb" => [
             "shared" => true,
             "callback" => function () {
                 $db = new litemerafrukt\Database\Database();
-                $db->configure('database.php');
+                $db->configure('olddatabase.php');
                 $db->connect();
                 return $db;
             }
         ],
-        "queryBuilder" => [
+        "db" => [
             "shared" => true,
             "callback" => function () {
                 $obj = new \Anax\Database\DatabaseQueryBuilder();
-                $obj->configure("querybuilder.php");
+                $obj->configure("database.php");
                 return $obj;
             }
         ],
@@ -199,7 +199,7 @@ return [
         "userController" => [
             "shared" => true,
             "callback" => function () {
-                $userHandler = new litemerafrukt\User\UserHandler($this->get('db'));
+                $userHandler = new litemerafrukt\User\UserHandler($this->get('olddb'));
                 $userController = new litemerafrukt\Controllers\UserController($userHandler);
                 $userController->setDI($this);
                 return $userController;
@@ -208,7 +208,7 @@ return [
         "userAccountController" => [
             "shared" => true,
             "callback" => function () {
-                $userHandler = new litemerafrukt\User\UserHandler($this->get('db'));
+                $userHandler = new litemerafrukt\User\UserHandler($this->get('olddb'));
                 $userController = new litemerafrukt\Controllers\UserAccountController($userHandler);
                 $userController->setDI($this);
                 return $userController;
@@ -217,7 +217,7 @@ return [
         "userRegisterController" => [
             "shared" => true,
             "callback" => function () {
-                $userHandler = new litemerafrukt\User\UserHandler($this->get('db'));
+                $userHandler = new litemerafrukt\User\UserHandler($this->get('olddb'));
                 $userController = new litemerafrukt\Controllers\UserRegisterController($userHandler);
                 $userController->setDI($this);
                 return $userController;
@@ -234,8 +234,8 @@ return [
         "adminUsersController" => [
             "shared" => true,
             "callback" => function () {
-                $userHandler = new litemerafrukt\User\UserHandler($this->get('db'));
-                $usersHandler = new litemerafrukt\Admin\UsersHandler($this->get('db'));
+                $userHandler = new litemerafrukt\User\UserHandler($this->get('olddb'));
+                $usersHandler = new litemerafrukt\Admin\UsersHandler($this->get('olddb'));
                 $userController = new litemerafrukt\Controllers\AdminUsersController($userHandler, $usersHandler);
                 $userController->setDI($this);
                 return $userController;

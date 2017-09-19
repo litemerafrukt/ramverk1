@@ -37,7 +37,7 @@ class BookController implements
      */
     public function getIndex()
     {
-        $title      = "A collection of items";
+        $title      = "Böcker";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
         $book = new Book();
@@ -61,7 +61,7 @@ class BookController implements
      */
     public function getPostCreateItem()
     {
-        $title      = "Create a item";
+        $title      = "Lägg till bok";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
         $form       = new CreateForm($this->di);
@@ -86,7 +86,7 @@ class BookController implements
      */
     public function getPostDeleteItem()
     {
-        $title      = "Delete an item";
+        $title      = "Ta bort bok";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
         $form       = new DeleteForm($this->di);
@@ -111,7 +111,7 @@ class BookController implements
      */
     public function getPostUpdateItem($id)
     {
-        $title      = "Update an item";
+        $title      = "Uppdatera bok";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
         $form       = new UpdateForm($this->di, $id);

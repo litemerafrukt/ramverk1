@@ -42,14 +42,14 @@ return [
             "file" => __DIR__ . "/route/flat-file-content.php",
         ],
         [
-            // Keep this last since its a catch all
-            "mount" => null,
-            "file" => __DIR__ . "/route/404.php",
-        ],
-        [
             // Add routes from bookController and mount on book/
             "mount" => "book",
             "file" => __DIR__ . "/route/book.php",
+        ],
+        [
+            // Keep this last since its a catch all
+            "mount" => null,
+            "file" => __DIR__ . "/route/404.php",
         ],
     ],
 ];

@@ -52,12 +52,10 @@ class DeleteForm extends FormModel
         $book = new Book();
         $book->setDb($this->di->get("db"));
 
-        $books = ["-1" => "Select an item..."];
-        foreach ($book->findAll() as $obj) {
-            $books[$obj->id] = "{$obj->column1} ({$obj->id})";
-        }
-
-        return $books;
+        return  \array_reduce($book->findAll(), function ($optionArr, $book) {
+            $optionArr[$book->id] = "{$book->title} ({$book->id})";
+            return $optionArr;
+        }, ["-1" => "Välj bok..."]);
     }
 
 
