@@ -4,15 +4,25 @@ namespace litemerafrukt\Comments;
 
 class Comments
 {
-    private $storage;
+    private $commentModel;
 
     /**
      * @param CommentStorage $storage
      * @param callback $textFormatter
      */
-    public function __construct(CommentStorageInterface $storage)
+    public function __construct(CommentModel $commentModel)
     {
-        $this->storage = $storage;
+        $this->commentModel = $commentModel;
+    }
+
+    /**
+     * All comments
+     *
+     * @return array
+     */
+    public function all()
+    {
+        return $this->commentModel->findAll();
     }
 
     /**
@@ -28,18 +38,9 @@ class Comments
      */
     public function add($subject, $authorId, $author, $authorEmail, $text)
     {
-        $id = $this->storage->getNextId();
-
-        $comment = new Comment($id, $subject, $authorId, $author, $authorEmail, $text);
-
-        list($valid, $message) = $this->validateComment($comment);
-
-        if ($valid) {
-            $this->storage->add($comment);
-            return [true, "Kommentaren, \"{$comment->getSubject()}\", har postats."];
-        } else {
-            return [false, $message];
-        }
+        $comment = $this->commentModel->new($subject, $authorId, $author, $authorEmail, $text);
+        $comment->save();
+        return [true, "Kommentaren, \"{$comment->subject}\", har postats."];
     }
 
     /**
@@ -55,27 +56,14 @@ class Comments
      */
     public function upsert($id, $subject, $text)
     {
-        $originalComment = $this->storage->fetch($id);
+        $comment = $this->commentModel->find("id", $id);
 
-        $newComment = $originalComment->newFromThis(['subject' => $subject, 'rawText' => $text]);
+        $comment->subject = $subject;
+        $comment->rawText = $text;
 
-        list($valid, $message) = $this->validateComment($newComment);
+        $comment->save();
 
-        if ($valid) {
-            $this->storage->upsert($newComment);
-            return [true, "Kommentaren, \"{$newComment->getSubject()}\", har ändrats."];
-        } else {
-            return [false, $message];
-        }
-    }
-    /**
-     * All comments
-     *
-     * @return array
-     */
-    public function all()
-    {
-        return $this->storage->all();
+        return [true, "Kommentaren, \"{$comment->subject}\", har ändrats."];
     }
 
     /**
@@ -85,15 +73,8 @@ class Comments
      */
     public function delete($id)
     {
-        return $this->storage->delete($id);
-    }
-
-    /**
-     * Empty all comments
-     */
-    public function deleteAll()
-    {
-        $this->storage->deleteAll();
+        $this->commentModel->delete($id);
+        return [true, "Kommentaren borttagen."];
     }
 
     /**
@@ -103,34 +84,6 @@ class Comments
      */
     public function fetch($commentId)
     {
-        return $this->storage->fetch($commentId);
-    }
-
-    /**
-     * Initialize
-     */
-    public function init()
-    {
-        $this->storage->init();
-    }
-
-    /**
-     * Validate the comment
-     *
-     * @param Comment
-     *
-     * @return [bool, string]
-     */
-    private function validateComment($comment)
-    {
-        if (\strlen($comment->getSubject()) === 0) {
-            return [false, "Kommentaren måste ha ett ämne."];
-        }
-
-        if (\strlen($comment->getAuthorEmail()) === 0) {
-            return [false, "E-postadress måste anges."];
-        }
-
-        return [true, "Validering ok"];
+        return $this->commentModel->find('id', $commentId);
     }
 }

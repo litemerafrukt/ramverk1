@@ -42,3 +42,26 @@ VALUES
   ('American Gods', 'Neil Gaiman'),
   ('Den flammande bägaren', 'JK Rowling')
 ;
+
+SELECT * FROM r1_Book;
+
+--
+-- Table comments
+--
+DROP TABLE IF EXISTS r1_comments;
+CREATE TABLE r1_comments (
+    `id`            INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `subject`       VARCHAR(100) NOT NULL,
+    `author`        VARCHAR(100) NOT NULL,
+    `authorId`      INT NOT NULL,
+    `authorEmail`   VARCHAR(100) NOT NULL,
+    `rawText`       TEXT NOT NULL
+) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
+
+INSERT INTO r1_comments
+  (subject, author, authorId, authorEmail, rawText)
+VALUES
+  ('First!', 'litemerafrukt', 3, 'litemerafrukt@gmail.com', 'Direkt från `setup-db.sql`!')
+;
+
+SELECT * FROM r1_comments;

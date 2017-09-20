@@ -23,15 +23,15 @@
 
 <?php foreach ($comments as $comment) : ?>
     <hr>
-    <h2><?= htmlspecialchars($comment->getSubject()) ?></h2>
-    <img src="<?= $comment->gravatar->url() ?>" alt="<?= $comment->getAuthorEmail() ?>">
-    <?php $viewName = $comment->getAuthor() ?: $comment->getAuthorEmail() ?>
-        <p><a href="mailto: <?= htmlspecialchars($comment->getAuthorEmail()) ?>"><?= htmlspecialchars($viewName)?></a></p>
+    <h2><?= htmlspecialchars($comment->subject) ?></h2>
+    <img src="<?= $comment->gravatar->url() ?>" alt="<?= $comment->authorEmail ?>">
+    <?php $viewName = $comment->author ?: $comment->authorEmail ?>
+        <p><a href="mailto: <?= htmlspecialchars($comment->authorEmail) ?>"><?= htmlspecialchars($viewName)?></a></p>
     <p><?= $comment->getText($formatter)?></p>
-    <?php if ($comment->getAuthorId() == $user->id() || $user->isAdmin) : ?>
+    <?php if ($comment->authorId == $user->id() || $user->isAdmin) : ?>
         <p class="text-right">
-            <a href="<?= $di->get('url')->create('comments/edit/' . $comment->getId()) ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-            <a href="<?= $di->get('url')->create('comments/delete/' . $comment->getId()) ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            <a href="<?= $di->get('url')->create('comments/edit/' . $comment->id) ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="<?= $di->get('url')->create('comments/delete/' . $comment->id) ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
         </p>
     <?php endif ?>
 <?php endforeach ?>

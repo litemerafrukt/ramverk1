@@ -186,12 +186,13 @@ return [
         "commentsController" => [
             "shared" => true,
             "callback" => function () {
-                $commentsStorage = new litemerafrukt\Comments\CommentSessionStorage($this->get('session'));
-                $commentsSupplier = new litemerafrukt\Comments\Comments($commentsStorage);
+                $commentModel = new litemerafrukt\Comments\CommentModel();
+                $commentModel->setDb($this->get('db'));
+                $commentsSupplier = new litemerafrukt\Comments\Comments($commentModel);
                 $textFormatter = function ($rawText) {
                     return $this->get('textfilter')->markdown(htmlspecialchars($rawText));
                 };
-                $commentsController = new litemerafrukt\Controllers\CommentsController($commentsSupplier, $textFormatter);
+                $commentsController = new litemerafrukt\Comments\CommentsController($commentsSupplier, $textFormatter);
                 $commentsController->setDi($this);
                 return $commentsController;
             }

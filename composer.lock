@@ -205,16 +205,16 @@
         },
         {
             "name": "anax/htmlform",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/htmlform.git",
-                "reference": "68d46708eafc85342f16147ebf867fe745c8795c"
+                "reference": "3da7f93cf147a460c29512186baa7d4f9e6e80b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/htmlform/zipball/68d46708eafc85342f16147ebf867fe745c8795c",
-                "reference": "68d46708eafc85342f16147ebf867fe745c8795c",
+                "url": "https://api.github.com/repos/canax/htmlform/zipball/3da7f93cf147a460c29512186baa7d4f9e6e80b4",
+                "reference": "3da7f93cf147a460c29512186baa7d4f9e6e80b4",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-24T13:50:30+00:00"
+            "time": "2017-09-19T19:10:02+00:00"
         },
         {
             "name": "anax/page",
@@ -957,16 +957,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.5.3",
+            "version": "v5.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "6f72c2fe16ac32153337045eaa60f21e2391b8f1"
+                "reference": "15b6e70c4819e6603a360a4f29c1f02fa69a7239"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/6f72c2fe16ac32153337045eaa60f21e2391b8f1",
-                "reference": "6f72c2fe16ac32153337045eaa60f21e2391b8f1",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/15b6e70c4819e6603a360a4f29c1f02fa69a7239",
+                "reference": "15b6e70c4819e6603a360a4f29c1f02fa69a7239",
                 "shasum": ""
             },
             "require": {
@@ -1000,7 +1000,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2017-09-07T17:07:35+00:00"
+            "time": "2017-09-19T21:52:21+00:00"
         }
     ],
     "packages-dev": [],

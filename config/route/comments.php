@@ -6,22 +6,10 @@
 return [
     "routes" => [
         [
-            "info" => "Prepare commenting system",
-            "requestMethod" => null,
-            "path" => "**",
-            "callable" => ["commentsController", "prepare"]
-        ],
-        [
             "info" => "Commenting main page",
             "requestMethod" => "get",
             "path" => "",
             "callable" => ["commentsController", "index"]
-        ],
-        [
-            "info" => "Delete all comments",
-            "requestMethod" => "get",
-            "path" => "empty",
-            "callable" => ["commentsController", "deleteAll"]
         ],
         [
             "info" => "Create new comment",

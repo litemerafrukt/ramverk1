@@ -1,6 +1,6 @@
 <?php
 
-namespace litemerafrukt\Controllers;
+namespace litemerafrukt\Comments;
 
 use litemerafrukt\Comments\Comments;
 use litemerafrukt\Comments\Comment;
@@ -24,24 +24,6 @@ class CommentsController implements InjectionAwareInterface
     }
 
     /**
-     * Setup comment system
-     */
-    public function prepare()
-    {
-        $this->comments->init();
-    }
-
-    /**
-     * Delete all comments
-     */
-    public function deleteAll()
-    {
-        $this->comments->deleteAll();
-
-        $this->renderPage("comments/emptyconfirm", "Kommentarer nollställda");
-    }
-
-    /**
      * Comments root page
      */
     public function index()
@@ -49,7 +31,7 @@ class CommentsController implements InjectionAwareInterface
         $comments = $this->comments->all();
 
         $comments = \array_map(function ($comment) {
-            $comment->gravatar = new Gravatar($comment->getAuthorEmail());
+            $comment->gravatar = new Gravatar($comment->authorEmail);
             return $comment;
         }, $comments);
 
@@ -74,7 +56,7 @@ class CommentsController implements InjectionAwareInterface
 
         $user = $this->di->get('user');
 
-        list($ok, $message) = $this->comments->add($subject, $user->id(), $user->name(), $user->email(), $text);
+        list($ok, $message) = $this->comments->add($subject, $user->id, $user->name, $user->email, $text);
 
         if ($ok) {
             $this->di->get('flash')->setFlash($message, "flash-success");
@@ -117,7 +99,7 @@ class CommentsController implements InjectionAwareInterface
             $this->di->get('tlz')->redirectBack();
         }
 
-        $this->renderPage("comments/edit", "{$comment->getSubject()}", ["comment" => $comment]);
+        $this->renderPage("comments/edit", "{$comment->subject}", ["comment" => $comment]);
     }
 
     /**
