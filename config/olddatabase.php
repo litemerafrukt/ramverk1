@@ -1,5 +1,7 @@
 <?php
 
+// mysql -hblu-ray.student.bth.se -uanng15 -p
+
 return [
     // $dsn      = "mysql:host=blu-ray.student.bth.se;dbname=anng15;",
     // $login    = "anng15",
