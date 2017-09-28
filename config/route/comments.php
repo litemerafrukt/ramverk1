@@ -35,5 +35,5 @@ return [
             "path" => "edit/{id:digit}",
             "callable" => ["commentsController", "editHandler"]
         ],
-    ]
+    ],
 ];

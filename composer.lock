@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "anax/common",
-            "version": "v1.0.13",
+            "version": "v1.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/common.git",
-                "reference": "507714bd3bd913e2cf72340e907a7ae907d0cd60"
+                "reference": "0ee6a4a6823f95a28b31f7782364b8ad1aba8a8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/common/zipball/507714bd3bd913e2cf72340e907a7ae907d0cd60",
-                "reference": "507714bd3bd913e2cf72340e907a7ae907d0cd60",
+                "url": "https://api.github.com/repos/canax/common/zipball/0ee6a4a6823f95a28b31f7782364b8ad1aba8a8b",
+                "reference": "0ee6a4a6823f95a28b31f7782364b8ad1aba8a8b",
                 "shasum": ""
             },
             "require": {
@@ -56,20 +56,20 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-10T15:25:00+00:00"
+            "time": "2017-09-25T11:49:52+00:00"
         },
         {
             "name": "anax/configure",
-            "version": "v1.0.2",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/configure.git",
-                "reference": "f832a0020bbf640588f5a4fdcdba6524f88bef72"
+                "reference": "81b7ebf49c13cd5d96453737acea8b3352e1a1ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/configure/zipball/f832a0020bbf640588f5a4fdcdba6524f88bef72",
-                "reference": "f832a0020bbf640588f5a4fdcdba6524f88bef72",
+                "url": "https://api.github.com/repos/canax/configure/zipball/81b7ebf49c13cd5d96453737acea8b3352e1a1ef",
+                "reference": "81b7ebf49c13cd5d96453737acea8b3352e1a1ef",
                 "shasum": ""
             },
             "require": {
@@ -102,20 +102,20 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-17T13:32:35+00:00"
+            "time": "2017-09-26T17:53:23+00:00"
         },
         {
             "name": "anax/database",
-            "version": "v1.1.3",
+            "version": "v1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/database.git",
-                "reference": "40fa3cf5bf21115724f4a2b839f08545780fdd3a"
+                "reference": "34e8c2484fd68befb85bfc3d12c75957af1c699d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/database/zipball/40fa3cf5bf21115724f4a2b839f08545780fdd3a",
-                "reference": "40fa3cf5bf21115724f4a2b839f08545780fdd3a",
+                "url": "https://api.github.com/repos/canax/database/zipball/34e8c2484fd68befb85bfc3d12c75957af1c699d",
+                "reference": "34e8c2484fd68befb85bfc3d12c75957af1c699d",
                 "shasum": ""
             },
             "require": {
@@ -154,20 +154,20 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-09-18T11:34:26+00:00"
+            "time": "2017-09-25T19:25:01+00:00"
         },
         {
             "name": "anax/di",
-            "version": "v1.0.5",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/di.git",
-                "reference": "684c1081d4fa7c06db1de66e941ccb4ffe1f64d8"
+                "reference": "3675a51a1bba028948d6eeaf6de035832c1cc214"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/di/zipball/684c1081d4fa7c06db1de66e941ccb4ffe1f64d8",
-                "reference": "684c1081d4fa7c06db1de66e941ccb4ffe1f64d8",
+                "url": "https://api.github.com/repos/canax/di/zipball/3675a51a1bba028948d6eeaf6de035832c1cc214",
+                "reference": "3675a51a1bba028948d6eeaf6de035832c1cc214",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +201,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-09-14T15:26:34+00:00"
+            "time": "2017-09-26T19:12:35+00:00"
         },
         {
             "name": "anax/htmlform",
@@ -256,16 +256,16 @@
         },
         {
             "name": "anax/page",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/page.git",
-                "reference": "d8c37e911df9c3a37c32629e4e4debcf8c13d079"
+                "reference": "e2a60025f39b1121674365eaff3f8955a2975a69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/page/zipball/d8c37e911df9c3a37c32629e4e4debcf8c13d079",
-                "reference": "d8c37e911df9c3a37c32629e4e4debcf8c13d079",
+                "url": "https://api.github.com/repos/canax/page/zipball/e2a60025f39b1121674365eaff3f8955a2975a69",
+                "reference": "e2a60025f39b1121674365eaff3f8955a2975a69",
                 "shasum": ""
             },
             "require": {
@@ -302,7 +302,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-14T22:27:32+00:00"
+            "time": "2017-09-25T10:35:22+00:00"
         },
         {
             "name": "anax/request",
@@ -402,16 +402,16 @@
         },
         {
             "name": "anax/router",
-            "version": "v1.0.13",
+            "version": "v1.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/router.git",
-                "reference": "7385cb47124aed970c807f08fdfc39234aa6d1dd"
+                "reference": "affc1343e550b7d2629b52150bbab53f6cb1dae4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/router/zipball/7385cb47124aed970c807f08fdfc39234aa6d1dd",
-                "reference": "7385cb47124aed970c807f08fdfc39234aa6d1dd",
+                "url": "https://api.github.com/repos/canax/router/zipball/affc1343e550b7d2629b52150bbab53f6cb1dae4",
+                "reference": "affc1343e550b7d2629b52150bbab53f6cb1dae4",
                 "shasum": ""
             },
             "require": {
@@ -446,7 +446,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-09-14T16:06:09+00:00"
+            "time": "2017-09-26T20:24:21+00:00"
         },
         {
             "name": "anax/session",
@@ -556,16 +556,16 @@
         },
         {
             "name": "anax/url",
-            "version": "v1.0.6",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/url.git",
-                "reference": "5d3fa7b073ac63426c9b0446a5e86ecafbd1f67e"
+                "reference": "a618a962c8657784a8c097d8f004e75c3078181f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/url/zipball/5d3fa7b073ac63426c9b0446a5e86ecafbd1f67e",
-                "reference": "5d3fa7b073ac63426c9b0446a5e86ecafbd1f67e",
+                "url": "https://api.github.com/repos/canax/url/zipball/a618a962c8657784a8c097d8f004e75c3078181f",
+                "reference": "a618a962c8657784a8c097d8f004e75c3078181f",
                 "shasum": ""
             },
             "require": {
@@ -602,7 +602,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-03-30T22:16:53+00:00"
+            "time": "2017-09-25T11:07:23+00:00"
         },
         {
             "name": "anax/view",
@@ -957,16 +957,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.5.7",
+            "version": "v5.5.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "15b6e70c4819e6603a360a4f29c1f02fa69a7239"
+                "reference": "dae85b18c6a2315645bca3dac37e3e408542efa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/15b6e70c4819e6603a360a4f29c1f02fa69a7239",
-                "reference": "15b6e70c4819e6603a360a4f29c1f02fa69a7239",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/dae85b18c6a2315645bca3dac37e3e408542efa8",
+                "reference": "dae85b18c6a2315645bca3dac37e3e408542efa8",
                 "shasum": ""
             },
             "require": {
@@ -1000,7 +1000,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2017-09-19T21:52:21+00:00"
+            "time": "2017-09-25T17:13:51+00:00"
         }
     ],
     "packages-dev": [],
