@@ -157,7 +157,7 @@ class CommentsController implements InjectionAwareInterface
 
         $comment = $this->comments->fetch($commentId);
 
-        if ($user->isLevel(UserLevels::USER) && ($comment->getAuthorId() == $user->id())) {
+        if ($user->isLevel(UserLevels::USER) && ($comment->authorId == $user->id)) {
             return $commentId;
         }
 
