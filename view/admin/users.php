@@ -15,7 +15,7 @@
     </thead>
     <tbody>
     <?php foreach ($users as $user) : ?>
-        <tr>
+        <tr class="<?= !is_null($user['deleted']) ? 'disabled-row' : '' ?>">
             <td><?= $user['id'] ?></td>
             <td><?= $user['username'] ?></td>
             <td><?= $user['email'] ?></td>
@@ -30,11 +30,19 @@
                     <i class="fa fa-unlock-alt"></i>
                 </a>
             </td>
-            <td>
-                <a class="danger" title="Ta bort" href="<?= $this->di->get('url')->create('admin/users/delete/'.$user['id']) ?>">
-                    <i class="fa fa-trash"></i>
-                </a>
-            </td>
+            <?php if (!is_null($user['deleted'])) : ?>
+                <td>
+                    <a class="success" title="Aktivera användarkonto" href="<?= $this->di->get('url')->create("admin/users/activate/".$user['id']) ?>">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            <?php else : ?>
+                <td>
+                    <a class="danger" title="Ta bort" href="<?= $this->di->get('url')->create('admin/users/delete/'.$user['id']) ?>">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            <?php endif ?>
         </tr>
     <?php endforeach; ?>
     </tbody>

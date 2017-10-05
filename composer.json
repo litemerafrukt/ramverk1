@@ -17,7 +17,8 @@
         "anax/page": "^1.0",
         "tightenco/collect": "^5.4",
         "anax/database": "^1.1",
-        "anax/htmlform": "^1.0"
+        "anax/htmlform": "^1.0",
+        "jakezatecky/array_group_by": "^1.0"
     },
     "autoload": {
         "psr-4": {

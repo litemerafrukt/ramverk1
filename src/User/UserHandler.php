@@ -25,7 +25,7 @@ class UserHandler
     public function login($username, $password)
     {
         // Lookup in database
-        $sql = 'SELECT * from r1_users WHERE username=?';
+        $sql = 'SELECT * from r1_users WHERE username=? && deleted IS NULL';
         $userFromDb = $this->db->query2collection($sql, [$username])
             ->first();
 

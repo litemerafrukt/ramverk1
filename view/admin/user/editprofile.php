@@ -19,7 +19,7 @@
             value="<?= $user['email'] ?>"
         >
     </p>
-    <p class="text-right">
+   <p class="text-right">
         <input class="button" type="submit" value="Ändra">
     </p>
 </form>

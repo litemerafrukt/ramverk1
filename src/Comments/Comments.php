@@ -4,86 +4,114 @@ namespace litemerafrukt\Comments;
 
 class Comments
 {
-    private $commentModel;
+    private $commentHandler;
+    private $rootView;
 
     /**
-     * @param CommentStorage $storage
-     * @param callback $textFormatter
+     * Construct
+     *
+     * @param $db - database objekt. See source for interface.
+     * @param $rootView - root view file for comments html rendering. See source for example.
      */
-    public function __construct(CommentModel $commentModel)
+    public function __construct($db, $rootView = __DIR__.'/view/comments.php')
     {
-        $this->commentModel = $commentModel;
+        $this->commentHandler = new CommentHandler($db);
+        $this->rootView = $rootView;
     }
 
     /**
-     * All comments
+     * Create a comment
      *
-     * @return array
+     * @param $postId
+     * @param $parentId - parent comment
+     * @param $authorId - author/user id
+     * @param $authorName - author/user name
+     * @param $text - comment text
+     *
+     * @return void
      */
-    public function all()
+    public function new($postId, $parentId, $authorId, $authorName, $text)
     {
-        return $this->commentModel->findAll();
+        if (\trim($text) === "") {
+            return;
+        }
+
+        $this->commentHandler->new($postId, $parentId, $authorId, $authorName, $text);
     }
 
     /**
-     * Add a comment
+     * Update a comment
      *
-     * @param string
-     * @param int
-     * @param string
-     * @param string
-     * @param string
+     * @param $id - comment id
+     * @param $text - comment text
+     * @param $guard - function, comment only updates if guard returns true
      *
-     * @return Comment
+     * @return bool
      */
-    public function add($subject, $authorId, $author, $authorEmail, $text)
+    public function update($id, $text, $guard)
     {
-        $comment = $this->commentModel->new($subject, $authorId, $author, $authorEmail, $text);
-        $comment->save();
-        return [true, "Kommentaren, \"{$comment->subject}\", har postats."];
+        $comment = $this->commentHandler->fetch($id);
+
+        if ($guard($comment)) {
+            return false;
+        }
+
+        $this->commentHandler->upsert($id, $text);
+        return true;
     }
 
     /**
-     * Update/replace a comment
+     * Delete all comments assosiated with a post.
      *
-     * @param integer
-     * @param string
-     * @param string
-     * @param string
-     * @param string
+     * @param $postId
      *
-     * @return Comment
+     * @return void
      */
-    public function upsert($id, $subject, $text)
+    public function deleteComments($postId)
     {
-        $comment = $this->commentModel->find("id", $id);
-
-        $comment->subject = $subject;
-        $comment->rawText = $text;
-
-        $comment->save();
-
-        return [true, "Kommentaren, \"{$comment->subject}\", har ändrats."];
+        $this->commentHandler->deleteComments($postId);
     }
 
     /**
-     * Delete a comment by id
+     * Get comment html for a post. All comments and save/edit forms.
      *
-     * @param integer
+     * @param $postId
+     * @param $user - true if there is user previlages.
+     * @param $admin - true if admin previleges.
+     * @param $username
+     * @param $userId
+     *
+     * @return string
      */
-    public function delete($id)
+    public function getHtml($postId, $user = false, $admin = false, $username = "unknown", $userId = null)
     {
-        $this->commentModel->delete($id);
-        return [true, "Kommentaren borttagen."];
+        $commentGroups = $this->commentHandler->commentsForPost($postId);
+
+        return $this->render($this->rootView, \compact('commentGroups', 'user', 'admin', 'username', 'userId'));
     }
 
     /**
-     * Fetch comment by id
+     * Render view file with data.
      *
-     * @return Comment
+     * @param $file
+     * @param $data
+     * @return string
+     * @throws \Exception
      */
-    public function fetch($commentId)
+    private function render($file, $data)
     {
-        return $this->commentModel->find('id', $commentId);
+        if (!file_exists($file)) {
+            throw new \Exception("View template not found: $file.");
+        }
+
+        ob_start();
+
+        extract($data);
+
+        include $file;
+
+        $output = ob_get_clean();
+
+        return $output;
     }
 }

@@ -68,11 +68,34 @@ class UsersHandler
      */
     public function deleteUser($id)
     {
-        $sql = "DELETE FROM r1_users WHERE id=?";
+        // $sql = "DELETE FROM r1_users WHERE id=?";
+        // $statement = $this->db->query($sql, [$id]);
+        // if ($statement->errorCode() !== '00000') {
+        //     return [false, "Kunde inte ta bort användare med id=$id."];
+        // }
+        // return [true, "Användare med id: $id, har tagits bort."];
+        $sql = "UPDATE r1_users SET deleted=? WHERE id=?";
+        $statement = $this->db->query($sql, [\date("Y-m-d H:i:s"), $id]);
+        if ($statement->errorCode() !== '00000') {
+            return [false, "Kunde inte ta bort anvädare med id=$id."];
+        }
+        return [true, "Användare nr: $id, satt som borttagen."];
+    }
+
+    /**
+     * Activate user with id
+     *
+     * @param int
+     *
+     * @return array [bool, string]
+     */
+    public function activateUser($id)
+    {
+        $sql = "UPDATE r1_users SET deleted=NULL WHERE id=?";
         $statement = $this->db->query($sql, [$id]);
         if ($statement->errorCode() !== '00000') {
-            return [false, "Kunde inte ta bort användare med id=$id."];
+            return [false, "Kunde inte aktivera anvädare med id=$id."];
         }
-        return [true, "Användare med id: $id, har tagits bort."];
+        return [true, "Användare nr: $id, aktiverad."];
     }
 }

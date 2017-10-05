@@ -1,12 +1,12 @@
 <?php
 
-namespace litemerafrukt\Comments;
+namespace litemerafrukt\Posts;
 
 use \Anax\Database\ActiveRecordModel;
 
-class CommentModel extends ActiveRecordModel
+class PostModel extends ActiveRecordModel
 {
-    protected $tableName = "comments";
+    protected $tableName = "posts";
 
     public $id;
     public $subject;
@@ -14,19 +14,21 @@ class CommentModel extends ActiveRecordModel
     public $authorId;
     public $authorEmail;
     public $rawText;
+    public $created;
+    public $updated;
 
     public function new($subject, $authorId, $author, $authorEmail, $text)
     {
-        $comment = new CommentModel();
-        $comment->subject = \trim($subject);
-        $comment->authorId = $authorId;
-        $comment->author = \trim($author);
-        $comment->authorEmail = \trim($authorEmail);
-        $comment->rawText = \trim($text);
+        $post = new PostModel();
+        $post->subject = \trim($subject);
+        $post->authorId = $authorId;
+        $post->author = \trim($author);
+        $post->authorEmail = \trim($authorEmail);
+        $post->rawText = \trim($text);
 
-        $comment->setDb($this->db);
+        $post->setDb($this->db);
 
-        return $comment;
+        return $post;
     }
 
     /**

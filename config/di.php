@@ -183,18 +183,18 @@ return [
                 return $rem;
             }
         ],
-        "commentsController" => [
+        "postController" => [
             "shared" => true,
             "callback" => function () {
-                $commentModel = new litemerafrukt\Comments\CommentModel();
-                $commentModel->setDb($this->get('db'));
-                $commentsSupplier = new litemerafrukt\Comments\Comments($commentModel);
+                $postModel = new litemerafrukt\Posts\PostModel();
+                $postModel->setDb($this->get('db'));
+                $postSupplier = new litemerafrukt\Posts\Posts($postModel);
                 $textFormatter = function ($rawText) {
                     return $this->get('textfilter')->markdown(htmlspecialchars($rawText));
                 };
-                $commentsController = new litemerafrukt\Comments\CommentsController($commentsSupplier, $textFormatter);
-                $commentsController->setDi($this);
-                return $commentsController;
+                $postController = new litemerafrukt\Posts\PostsController($postSupplier, $textFormatter);
+                $postController->setDi($this);
+                return $postController;
             }
         ],
         "userController" => [

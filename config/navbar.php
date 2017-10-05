@@ -19,8 +19,8 @@ return [
             "route" => "reports",
         ],
         "comments" => [
-            "label" => '<i class="fa fa-comments" aria-hidden="true"></i> ProtoKom',
-            "route" => "comments",
+            "label" => '<i class="fa fa-comments" aria-hidden="true"></i> ProtoPost',
+            "route" => "posts",
         ],
         "books" => [
             "label" => '<i class="fa fa-book" aria-hidden="true"></i> Book',

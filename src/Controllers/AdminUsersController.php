@@ -146,6 +146,23 @@ class AdminUsersController implements InjectionAwareInterface
     }
 
     /**
+     * Delete user with id
+     *
+     * @param int $id
+     */
+    public function activate($id)
+    {
+        list($ok, $message) = $this->usersHandler->activateUser($id);
+
+        if (! $ok) {
+            $this->di->get('flash')->setFlash($message, "flash-danger");
+            $this->di->get('tlz')->redirectBack();
+        }
+        $this->di->get('flash')->setFlash($message, "flash-success");
+        $this->di->get('tlz')->redirectBack();
+    }
+
+    /**
      * Make user with id admin
      *
      * @param int $id
