@@ -1,5 +1,4 @@
 <?php
-
 namespace litemerafrukt\Controllers;
 
 use litemerafrukt\User\UserLevels;
