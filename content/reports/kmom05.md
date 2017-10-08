@@ -4,26 +4,33 @@ title: "Kmom05 - rapport"
 
 ## Kmom05
 
-Jag är inte säker på att jag håller med om att kommentarsmodulen passar som ett packagist paket. Det känns mer som något som passar för att vara en scaffold.
 
-När jag räknade ihop vad min kommentars kontroller hade för dependencies på resten av ramverket (sju stycken) och då kändes det tydligt att kontrollern snarare var en del av appen än en del av ett fristående paket. Samtidigt kan jag hålla med mos om att kommentarspaketet inte blir mycket att ha utan kontrollern.
+### Hur gick arbetet med att lyfta ut koden ur me-sidan och placera i en egen modul?
+När jag tittade på de beroenden som mitt kommentarssystem från kmom04 hade på resten av me-sidan började jag fundera på om det var en lämplig sak att göra en modul av. Det kändes som att det lätt skulle bli en pusselbit som passar i ett enda pussel snarare än en legobit som kan användas till många byggen.
 
-Min känsla är att en kontroller i en anax app tillhör appen snare än något som passar för att lägga i ett paket. Ta remservern som exempel, när denna ska integreras i appen behöver diverse filer kopieras till rätt plats i appen för att kontrollern ska fungera som den ska. Vad händer vid en uppdatering av paketet? Då ska detta åter igen kopieras och möjligen också modifieras på sätt som fungerar i just min app. Jag måste smälta att paket som de på packagist passar för detta, min känsla är att detta passar bättre som scaffolding.
+Ett arbetsflöde där det potentiellt ska kopieras filer vid var uppgradering av packet kändes mer som en scaffold än ett paket. Jag kan inte se att det är något fel att distribuera scaffolds genom packagist. Speciellt inte om man dessutom automatiserar scaffoldandet med tex make-script. (Jämför integreringen av remservern, från packagist, i kmom05 med integreringen av Book, från en Anax scaffold, i kmom04. Skillnaden finns i detaljerna men i stort är det nästan samma sak.)
 
----
+Jag gillar Anax nya scaffolds och skulle här kunna göra min egen kommentars scaffold. Samtidigt lät det på uppgiften inte riktigt som att det skulle uppfattas som att vi skulle bygga en scaffold. En scaffold är en början och jag skulle nog vilja strippa bort en hel del från mina kommentarsklasser om det skulle bli en bra scaffold. Och skulle användardelen ingå? Eller skulle jag gå tillbaka till det läge som kommentarssystemet hade på kmom02? Och hur skulle jag isåfall integrera detta på ett snyggt sätt i min me-sida?
 
+För att komma loss ur funderingarna bestämde jag mig för att försöka gå framåt istället. Då det talats om ett reddit-likanande forum i kmom10 började jag istället utveckla den "nästlade kommentarer på forumposter" funktion som finns på både reddit och hacker news.
 
+Jag började skriva forum post kommentars funktionaliteten som en del av me-sidan och lyfte ut den när grundfunktionen fanns på plats. Det blev en hel del mer-arbete men jag hoppas det ska betala sig på i kmom10.
 
-Jag har skrivit kommentarsmodulen som en del av "appen" som utgörs av min me-sida. Detta har medfört många kopplingar mellan kommentarsfunktionaliteten och resten av appen.
+Då jag kunde bygga denna modul med färre krav på resten av me-sidan var det relativt enkelt att lyfta ut koden ur me-sidan.
 
-En kommentarsmodul skulle likna en scaffold snarare än ett packagistpaket. Jämför tex integreringen av remservern, från packagist, i kmom05 med integreringen av Book, från scaffold, i kmom04. Skillnaden finns i detaljerna men i stort är det nästan samma sak. Att en kommentarsmodul skulle vara en scaffold understryks kanske ännu tydligare av inlägget i forumet som tipsar om att vi kan göra en make-fil som ser till att kopiera saker till sina rätta ställen för att underlätta integreringen.
+### Flöt det på bra med GitHub och kopplingen till Packagist?
+Det flöt på bra. Jag testade att lägga upp en del jag skrev under oophp på packagist så det var inte nytt.
 
-Jag kan inte se att det är något fel att distribuera scaffolds genom packagist. Speciellt inte om man dessutom automatiserar scaffoldandet med script eller tex ett make-script.
+### Hur gick det att åter installera modulen i din me-sida med composer, kunde du följa du din installationsmanual?
+Då min me-sida redan hade de beroenden som paketet krävde i form av databastabeller och krav på databasklassen räckte det med en `composer require litemerafrukt/postcomments` för att allt skulle fungera.
 
-Vad jag kände var att min kommentarsmodul inte längre passade för att bli en scaffold. En scaffold är en början, ofta rå, och även om jag inte kommit speciellt långt på min kommentarsmodul kände jag att göra denna till en scaffold skulle vara att gå baklänges.
+### Hur väl lyckas du enhetstesta din modul och hur mycket kodtäckning fick du med?
+Den modul som jag skrivit är inte speciellt besvärlig att enhetstesta. I SOLID-anda injiceras alla beroenden vid konstruktionen av objekten. Modulen behöver en liten databastabell och den skapas i en sqlite-databas i minnet vid testning.
 
-Ett alternativ hade varit att ta kommentarsmodulen och strippa denna för att sedan göra scaffold som jag senare integrerade i min hemsida som en ny modul. Men detta lockade mig inte. Däremot har det hela tiden talats om att projektet ska bestå i en twitter, stackoverflow, hacker new eller reddit kopia. En sak som utmärker de tre senare alternativen är att där är inlägg som sedan kommenteras.
+Jag skrev bara några stycken tester i detta kursmoment och kodtäcknignen ligger på 74% för kommentarsklasserna och 36% för databasklassen.
 
-När jag satt och begrundade mina val insåg jag att min kommentarsmodul mest liknat den klassiska 90-tals gästboken snarare än någon slags forum. Då såg jag en utväg ur min motvilja att göra min befintliga kommentarsmodul till en scaffold genom att göra om kommentarsfunktionaliteten till något som mer liknar ett reddit forum och sedan nyutveckla en modul som skulle underlätta införandet av kommentarer på inlägg. Möjligen innebär detta en del merarbete men jag hoppas att detta ska kunna betala sig när vi kommer till projektet.
+### Några reflektioner över skillnaden med och utan modul?
+Det blir krångligare när något skall läggas i en modul och jag ser inget direkt mervärde i att bryta upp delar som är appspecifika i moduler om inte dessa kan göras generella. Det blir merarbete och för att detta merarbete ska vara mödan värt behöver det vara en modul som faktiskt går att återanvända, finns ett behov av att återanvända och som är tillräckligt användarvänlig (utvecklaren är användaren i detta fallet).
 
-Det första jag gjorde var en förändring av befintlig kommentarsfunktionalitet till att funktionellt och semantiskt (i koden) vara inlägg. Sedan började jag med en enkel kommentarsfunktion för dessa inlägg. Detta skulle även innebära att det mesta av den nya koden skulle hamna i modell-lagret och jag skulle slippa en kontroller som naturligt (i alla fall vad jag sett av kontrollers i anax och laravel) har starka kopplingar in i resten av appen.
+Vissa saker passar alldeles utmärkt och bör ligga i en modul, har du en modul som liksom en legobit återanvänds i projekt efter projekt bör den läggas i en modul. Där skulle det bara vara det initiala merarbetet med att göra det till en modul. Att sedan kunna distribuera uppdateringar via packagist och bara göra en `composer update` för att uppdatera resten av projekten är helt lysande. Samma sak med en scaffold som används om och om igen. Dessa kan ju också distribueras via packagist men skillnaden är väl att när du väl börjat arbeta vidare från scaffolden är det inte längre speciellt lätt att uppdatera.
+
