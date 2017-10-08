@@ -57,5 +57,11 @@ return [
             "path" => "users/promote/{id:digit}",
             "callable" => ["adminUsersController", "makeAdmin"]
         ],
+        [
+            "info" => "Activate user",
+            "requestMethod" => "get",
+            "path" => "users/activate/{id:digit}",
+            "callable" => ["adminUsersController", "activate"]
+        ],
     ]
 ];

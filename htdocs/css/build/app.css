@@ -433,6 +433,10 @@ p {
   vertical-align: middle;
   letter-spacing: 1px;
 }
+.button-small {
+  padding: 0 2px;
+  font-size: smaller;
+}
 .button:hover {
   border: none;
   background: #28597a;
@@ -493,6 +497,9 @@ td {
 }
 thead {
   background-color: #ddd;
+}
+.disabled-row {
+  opacity: 0.2;
 }
 /** styling forms */
 .form-element-required {
@@ -699,6 +706,44 @@ nav a:hover {
   }
 }
 /**
+ * Comments
+ */
+.comments-ul {
+  list-style: none;
+}
+.comment-li {
+  padding: 1rem 0 1rem 0;
+}
+.comment-author-created {
+  font-size: smaller;
+}
+.comment-top-button {
+  border: none;
+  background: #65a9d7;
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: white;
+  font-size: 17px;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+  letter-spacing: 1px;
+}
+.comment-button {
+  border: none;
+  background: #65a9d7;
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: white;
+  font-size: 17px;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+  letter-spacing: 1px;
+  padding: 0 2px;
+  font-size: smaller;
+}
+/**
  * More specific stuff
  */
 .selfie img {
@@ -724,4 +769,19 @@ nav a:hover {
 }
 .danger {
   color: red;
+}
+.success {
+  color: green;
+}
+.ul-no-style {
+  list-style: none;
+}
+.larger-text {
+  font-size: larger;
+}
+.smaller-text {
+  font-size: smaller;
+}
+.noshow {
+  display: none;
 }

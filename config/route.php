@@ -18,8 +18,8 @@ return [
         ],
         [
             // Routers for commenting system
-            "mount" => "comments",
-            "file" => __DIR__ . "/route/comments.php",
+            "mount" => "posts",
+            "file" => __DIR__ . "/route/posts.php",
         ],
         [
             // Routers for the REM server mounts on remserver/api/
