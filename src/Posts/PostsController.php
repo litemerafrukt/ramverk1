@@ -6,6 +6,7 @@ use litemerafrukt\Gravatar\Gravatar;
 use litemerafrukt\User\UserLevels;
 
 use litemerafrukt\Comments\Comments;
+use litemerafrukt\Comments\CommentHandler;
 
 use Anax\DI\InjectionAwareInterface;
 use Anax\DI\InjectionAwareTrait;
@@ -50,7 +51,7 @@ class PostsController implements InjectionAwareInterface
         $user->isUser = $user->isLevel(UserLevels::USER);
         $user->isAdmin = $user->isLevel(UserLevels::ADMIN);
 
-        $comments = new Comments($this->di->get('olddb'));
+        $comments = new Comments(new CommentHandler($this->di->get('olddb')));
 
         if ($this->di->request->getPost('new-comment-submitted', false) && $user) {
             $authorId = $user->id;
