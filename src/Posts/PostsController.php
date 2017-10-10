@@ -115,7 +115,8 @@ class PostsController implements InjectionAwareInterface
             $this->di->get('flash')->setFlash($message, "flash-danger");
         }
 
-        (new Comments($this->di->get('olddb')))->deleteComments($id);
+        $comments = new Comments(new CommentHandler($this->di->get('olddb')));
+        $comments->deleteComments($id);
 
         $this->di->get('tlz')->redirect("posts");
     }
