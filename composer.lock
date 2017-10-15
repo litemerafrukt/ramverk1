@@ -106,26 +106,26 @@
         },
         {
             "name": "anax/database",
-            "version": "v1.1.4",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/database.git",
-                "reference": "34e8c2484fd68befb85bfc3d12c75957af1c699d"
+                "reference": "e5056f57cf29d13fb07ef18ed7ff3ea596e7c25f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/database/zipball/34e8c2484fd68befb85bfc3d12c75957af1c699d",
-                "reference": "34e8c2484fd68befb85bfc3d12c75957af1c699d",
+                "url": "https://api.github.com/repos/canax/database/zipball/e5056f57cf29d13fb07ef18ed7ff3ea596e7c25f",
+                "reference": "e5056f57cf29d13fb07ef18ed7ff3ea596e7c25f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
             "require-dev": {
-                "anax/common": "^1.0"
+                "anax/configure": "^1.0"
             },
             "suggest": {
-                "anax/common": "To enhance integration with Anax framework."
+                "anax/configure": "To enhance integration with Anax framework."
             },
             "type": "library",
             "autoload": {
@@ -154,7 +154,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-09-25T19:25:01+00:00"
+            "time": "2017-10-12T14:17:22+00:00"
         },
         {
             "name": "anax/di",
@@ -556,23 +556,20 @@
         },
         {
             "name": "anax/url",
-            "version": "v1.0.7",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/url.git",
-                "reference": "a618a962c8657784a8c097d8f004e75c3078181f"
+                "reference": "ef97056bca3c6fe8a558507a51bd13f512867bbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/url/zipball/a618a962c8657784a8c097d8f004e75c3078181f",
-                "reference": "a618a962c8657784a8c097d8f004e75c3078181f",
+                "url": "https://api.github.com/repos/canax/url/zipball/ef97056bca3c6fe8a558507a51bd13f512867bbe",
+                "reference": "ef97056bca3c6fe8a558507a51bd13f512867bbe",
                 "shasum": ""
             },
             "require": {
-                "anax/common": "^1.0",
-                "php": ">=5.6"
-            },
-            "require-dev": {
+                "anax/configure": "^1.0",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -602,7 +599,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-09-25T11:07:23+00:00"
+            "time": "2017-10-12T13:05:22+00:00"
         },
         {
             "name": "anax/view",
@@ -748,21 +745,21 @@
         },
         {
             "name": "litemerafrukt/postcomments",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/litemerafrukt/postcomments.git",
-                "reference": "5d150a8d0858c4a04ae40bb95c3962881927a831"
+                "reference": "7d813912ee14aaf2106a0c73b8647d49855dd4cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/litemerafrukt/postcomments/zipball/5d150a8d0858c4a04ae40bb95c3962881927a831",
-                "reference": "5d150a8d0858c4a04ae40bb95c3962881927a831",
+                "url": "https://api.github.com/repos/litemerafrukt/postcomments/zipball/7d813912ee14aaf2106a0c73b8647d49855dd4cf",
+                "reference": "7d813912ee14aaf2106a0c73b8647d49855dd4cf",
                 "shasum": ""
             },
             "require": {
                 "jakezatecky/array_group_by": "^2.0",
-                "php": ">=5.6"
+                "php": ">=7.0"
             },
             "type": "library",
             "autoload": {
@@ -791,7 +788,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-10-08T19:44:00+00:00"
+            "time": "2017-10-15T11:21:44+00:00"
         },
         {
             "name": "michelf/php-markdown",

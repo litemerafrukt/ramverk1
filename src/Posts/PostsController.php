@@ -65,7 +65,7 @@ class PostsController implements InjectionAwareInterface
             $id = $this->di->request->getPost('comment-id', null);
             $text = \trim($this->di->request->getPost('comment-text', ''));
             $comments->update($id, $text, function ($comment) use ($user) {
-                return $comment['id'] === $user->id;
+                return $comment['authorId'] == $user->id || $user->isAdmin;
             });
 
             $this->di->get("response")->redirectSelf();
