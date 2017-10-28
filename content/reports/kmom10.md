@@ -11,7 +11,7 @@ Förstasidan presenterar i stort sett hela forumet på en gång med alla inlägg
 
 De populäraste taggarna är alltid listade högst upp på alla sidor. Layouten har också en bar till höger där de användare med högst "cred" finns listade och en länk till "Om"-sidan. Layouten har en egen kontroller som körs för samtliga routes och som ser till att sätta upp saker som sidobaren och den dynamiska loginknappen.
 
-Taggarna fick en egen kontroller då taggarna även har egna sidor. Tag-kontrollern körs också för samtliga routes för att sätta toptaggarna högst upp på sidan.
+Taggarna fick en egen kontroller då taggarna även har egna sidor. Tag-kontrollern körs också för samtliga routes för att sätta toptaggarna högst upp på sidan. Klickar man på toptagsrubriken kommer man till en sida med samtliga taggar. Klickar man någon av toptaggarna kommer man till en sida som listar inlägg och frågor för den taggen.
 
 Markdown fungerar för både inlägg, frågor och kommentarer och jag har använt HTML-purifier för att tvätta markdown.
 
